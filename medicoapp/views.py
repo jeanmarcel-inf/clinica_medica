@@ -4,5 +4,5 @@ from django.http import HttpResponse
 # Create your views here.
 
 
-def index(request):
-    return HttpResponse("Aplicação do Paciente")
+def home(request):
+    return HttpResponse("Aplicação do Médico")
