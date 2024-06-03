@@ -5,4 +5,8 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Aplicação do Paciente")
+    return render(request, "pages/home.html")
+
+
+def login(request):
+    return render(request, "authentication/login.html")
