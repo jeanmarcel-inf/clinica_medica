@@ -1,0 +1,25 @@
+
+{% extends "../layouts/base.html"%}{% load static %}
+
+{% block content%}
+<div
+    class="p-5 text-center bg-image"
+    style="
+      background-image: url('../../../static/img/hero-image.png');
+      height: 100vh;
+    "
+  >
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.25);">
+      <div class="container d-flex justify-content-center align-items-center h-100">
+        <div class="text-white">
+          <h1 class="display-1 font-bold">Área do Usuário</h1>
+          <h5 class=" mb-3 lead">Trazendo praticidade e compromisso com o seu atendimento.</h5>
+          <div class="row gap-2 py-4 px-2">
+                <a data-mdb-ripple-init class="btn btn-primary col-md-5" href="/auth/login">Login</a>
+                <a data-mdb-ripple-init class="btn btn-primary col-md-5" href="/auth/register">Cadastro</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
