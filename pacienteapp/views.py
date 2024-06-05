@@ -6,3 +6,11 @@ from django.http import HttpResponse
 
 def index(request):
     return render(request, "pages/index.html")
+
+
+def home(request):
+    return render(request, "pages/home.html")
+
+
+def agenda_consultas(request):
+    return render(request, "pages/agendamentos.html")

@@ -1,0 +1,218 @@
+{% extends "../layouts/base.html" %} {% block content %}
+
+<div class="container mb-5">
+	<div class="row border gap-3 justify-content-between my-3 mt-5">
+		<select
+			class="form-select col-6 w-25"
+			aria-label="Default select example"
+		>
+			<option selected>Especialidade</option>
+			<option value="1">One</option>
+			<option value="2">Two</option>
+			<option value="3">Three</option>
+		</select>
+		<div data-mdb-input-init class="form-outline border w-25 col-6 mb-3">
+			<input
+				type="date"
+				id="form3Example4"
+				class="form-control form-control-lg"
+			/>
+			<label class="form-label" for="form3Example4">Data</label>
+		</div>
+	</div>
+
+	<div class="row justify-content-center justify-content-md-start">
+		<!-- Card -->
+		<div class="card" style="width: 20rem">
+			<img
+				src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+				class="card-img-top"
+				alt="Sunset Over the Sea"
+			/>
+			<div class="card-body">
+				<h3 class="card-title">Jerson Silva</h3>
+				<p class="card-subtitle text-primary">CRM - 000000RJ</p>
+				<button class="btn btn-sm mt-2 btn-outline-primary">
+					Cardiologista
+				</button>
+			</div>
+			<!-- Button trigger modal -->
+			<button
+				type="button"
+				class="btn btn-lg btn-primary"
+				data-bs-toggle="modal"
+				data-bs-target="#exampleModal"
+			>
+				Ver Horários
+			</button>
+
+			<!-- Modal -->
+			<div
+				class="modal fade"
+				id="exampleModal"
+				tabindex="-1"
+				aria-labelledby="exampleModalLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title fs-5" id="exampleModalLabel">
+								Agendar Horário de Consulta
+							</h1>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+
+						<div class="modal-body">
+							<div class="row align-items-center">
+								<div class="col-4">
+									<img
+										src="../../../static/img/foto-medico.png"
+										class="img-thumbnail"
+										alt="foto medico"
+									/>
+								</div>
+								<div class="col-8">
+									<span class="badge text-bg-primary mb-2">
+										Cardiologista
+									</span>
+									<h2 class="text-break">Jerson Silva</h2>
+									<h6 class="text-primary">
+										CRM - 0000000RJ
+									</h6>
+									<h6 class="text-secondary">
+										Sexo: Masculino
+									</h6>
+									<h6 class="text-secondary">
+										Idade: 57 anos
+									</h6>
+								</div>
+							</div>
+							<hr class="hr hr-blurry my-3" />
+
+							<!-- Lista -->
+							<div class="row g-3 my-3">
+								<div class="col-2">
+									<button
+										class="btn btn-outline-primary btn-lg"
+									>
+										8:00
+									</button>
+								</div>
+								<div class="col-2">
+									<button
+										class="btn btn-outline-primary btn-lg"
+									>
+										8:00
+									</button>
+								</div>
+								<div class="col-2">
+									<button
+										class="btn btn-outline-primary btn-lg"
+									>
+										8:00
+									</button>
+								</div>
+								<div class="col-2">
+									<button
+										class="btn btn-outline-primary btn-lg"
+									>
+										8:00
+									</button>
+								</div>
+								<div class="col-2">
+									<button
+										class="btn btn-outline-primary btn-lg"
+									>
+										8:00
+									</button>
+								</div>
+								<div class="col-2">
+									<button
+										class="btn btn-outline-primary btn-lg"
+									>
+										8:00
+									</button>
+								</div>
+								<div class="col-2">
+									<button
+										class="btn btn-outline-primary btn-lg"
+									>
+										8:00
+									</button>
+								</div>
+								<div class="col-2">
+									<button
+										class="btn btn-outline-primary btn-lg"
+									>
+										8:00
+									</button>
+								</div>
+								<div class="col-2">
+									<button
+										class="btn btn-outline-primary btn-lg"
+									>
+										8:00
+									</button>
+								</div>
+								<div class="col-2">
+									<button
+										class="btn btn-outline-primary btn-lg"
+									>
+										8:00
+									</button>
+								</div>
+								<div class="col-2">
+									<button
+										class="btn btn-outline-primary btn-lg"
+									>
+										8:00
+									</button>
+								</div>
+								<div class="col-2">
+									<button
+										class="btn btn-outline-primary btn-lg"
+									>
+										8:00
+									</button>
+								</div>
+							</div>
+							<div
+								data-mdb-input-init
+								class="form-outline mt-4 mb-2"
+							>
+								<textarea
+									class="form-control"
+									id="textAreaExample1"
+									rows="3"
+								></textarea>
+								<label class="form-label" for="textAreaExample"
+									>Razão da Consulta</label
+								>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal"
+							>
+								Fechar
+							</button>
+							<button type="button" class="btn btn-primary">
+								Agendar
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
