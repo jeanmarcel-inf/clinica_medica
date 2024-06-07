@@ -1,32 +1,42 @@
-{% extends "../layouts/base.html"%}{% load static %} {% block content%}
-{% block title%}Página Inicial{% endblock%}
+{% extends "../layouts/base.html"%} {% block title%}Página Inicial{% endblock%}
+{% block content%} {% include "../includes/navigation-no-auth.html" %}
+<!-- Background image -->
 <div
-	class="p-5 text-center bg-image"
+	class="bg-image"
 	style="
 		background-image: url('../../../static/img/hero-image.png');
 		height: 100vh;
 	"
 >
-	<div class="mask" style="background-color: rgba(0, 0, 0, 0.25)">
+	<div class="mask" style="background-color: hsla(0, 0%, 0%, 0.5)">
 		<div
-			class="container d-flex justify-content-center align-items-center h-100"
+			class="container d-flex align-items-center justify-content-center h-100"
 		>
-			<div class="text-white">
-				<h1 class="display-1 font-bold">Área do Usuário</h1>
-				<h5 class="mb-3 lead">
-					Trazendo praticidade e compromisso com o seu atendimento.
-				</h5>
-				<div class="row gap-2 py-4 px-2">
+			<div class="text-white text-center">
+				<h1 class="display-1 font-bold">
+					Clínica Médica
+					<img
+						class="ms-2"
+						src="../../../static/img/logo.png"
+						height="100"
+						alt="Logo Clinica Medica"
+						loading="lazy"
+					/>
+				</h1>
+				<p class="lead mt-2 mb-5">
+					Trazendo praticidade e compromisso com o seu atendimento
+				</p>
+				<div>
 					<a
-						data-mdb-ripple-init
-						class="btn btn-primary col-md-5"
+						class="btn btn-lg btn-primary me-4 w-25"
 						href="/auth/login"
+						data-mdb-ripple-init
 						>Login</a
 					>
 					<a
-						data-mdb-ripple-init
-						class="btn btn-primary col-md-5"
+						class="btn btn-lg btn-secondary w-25"
 						href="/auth/register"
+						data-mdb-ripple-init
 						>Cadastro</a
 					>
 				</div>
@@ -34,4 +44,5 @@
 		</div>
 	</div>
 </div>
+<!-- Background image -->
 {% endblock %}

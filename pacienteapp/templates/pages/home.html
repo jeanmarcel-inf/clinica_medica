@@ -1,99 +1,149 @@
-{% extends "../layouts/base.html" %} 
-{% block title %}Área do Usuário{% endblock %}
-{% block content %}
+{% extends "../layouts/base.html" %} {% block title %}Área do Usuário{% endblock %} {% block content %}
+{% include "../includes/navigation.html" %}
+
+<!-- Header da Página / Hero Section-->
 <header
-	class="p-5 text-center bg-image"
+	class="text-center bg-image"
 	style="
 		background-image: url('../../../static/img/imagem.png');
 		height: 60vh;
 	"
 >
-	<div class="container d-flex align-items-center h-100">
-		<div class="text-white text-center">
-			<h1 class="display-1 font-bold">Juntos pela sua saúde</h1>
-			<h5 class="lead">
-				Nosso hospital oferece atendimento de qualidade com tecnologia
-				de ponta e cuidado humanizado. Estamos aqui para cuidar de você
-				e da sua família. Juntos, pela sua saúde.
-			</h5>
+	<div class="mask" style="background-color: hsla(0, 0%, 0%, 0.5)">
+		<div class="container d-flex align-items-center h-100">
+			<div class="text-white text-center">
+				<h1 class="display-1 mb-3 font-bold">Juntos pela sua saúde</h1>
+				<p class="lead">
+					Nosso hospital oferece atendimento de qualidade com
+					tecnologia de ponta e cuidado humanizado. Estamos aqui para
+					cuidar de você e da sua família. Juntos, pela sua saúde.
+				</p>
+			</div>
 		</div>
 	</div>
 </header>
-<section class="container p-md-5 mb-10 mb-md-5">
-	<h4 class="text-primary ms-md-5 text-center text-md-start">
-		Próximos Agendamentos
-	</h4>
 
-	<!-- Cards container-->
-	<div class="row mt-5 px-3 gap-5 justify-content-around">
-		<!-- Card -->
-		<div class="card" style="width: 20rem">
-			<img
-				src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
-				class="card-img-top"
-				alt="Sunset Over the Sea"
-			/>
-			<div class="card-body">
-				<h3 class="card-title">Jerson Silva</h3>
-				<p class="card-subtitle text-primary">04/06/2024 - 18:00</p>
-				<button class="btn btn-sm mt-2 btn-outline-primary">
-					Cardiologista
-				</button>
-			</div>
-			<div class="card-footer mt-4">
-				<button class="btn w-100 btn-primary">Ver Mais</button>
+<!-- Section: Próximos Agendamentos -->
+<section class="container-fluid mb-10 mt-5">
+	<div class="text-center fw-bold mb-8">
+		<h6 class="mb-0 fs-6 text-uppercase">Consultas</h6>
+		<h3 class="display-6 text-primary">Agendamentos recentes</h3>
+	</div>
+
+	<div class="row row-cols-1 justify-content-evenly row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+		<div class="col">
+			<div class="card">
+				<img
+					src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+					class="card-img-top"
+					alt="Hollywood Sign on The Hill"
+				/>
+				<div class="card-body">
+					<h3 class="card-title">Jerson Silva</h3>
+					<p class="card-subtitle text-primary">04/06/2024 - 18:00</p>
+					<button class="btn btn-sm mt-2 btn-outline-primary">
+						Cardiologista
+					</button>
+				</div>
+				<div class="card-footer mt-4">
+					<button class="btn w-100 btn-primary">Ver Mais</button>
+				</div>
 			</div>
 		</div>
-
-		<!-- Card -->
-		<div class="card" style="width: 20rem">
-			<img
-				src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
-				class="card-img-top"
-				alt="Sunset Over the Sea"
-			/>
-			<div class="card-body">
-				<h3 class="card-title">Jerson Silva</h3>
-				<p class="card-subtitle text-primary">04/06/2024 - 18:00</p>
-				<button class="btn btn-sm mt-2 btn-outline-primary">
-					Cardiologista
-				</button>
-			</div>
-			<div class="card-footer mt-4">
-				<button class="btn w-100 btn-primary">Ver Mais</button>
+		<div class="col">
+			<div class="card">
+				<img
+					src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+					class="card-img-top"
+					alt="Hollywood Sign on The Hill"
+				/>
+				<div class="card-body">
+					<h3 class="card-title">Jerson Silva</h3>
+					<p class="card-subtitle text-primary">04/06/2024 - 18:00</p>
+					<button class="btn btn-sm mt-2 btn-outline-primary">
+						Cardiologista
+					</button>
+				</div>
+				<div class="card-footer mt-4">
+					<button class="btn w-100 btn-primary">Ver Mais</button>
+				</div>
 			</div>
 		</div>
-
-		<!-- Card -->
-		<div class="card" style="width: 20rem">
-			<img
-				src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
-				class="card-img-top"
-				alt="Sunset Over the Sea"
-			/>
-			<div class="card-body">
-				<h3 class="card-title">Jerson Silva</h3>
-				<p class="card-subtitle text-primary">04/06/2024 - 18:00</p>
-				<button class="btn btn-sm mt-2 btn-outline-primary">
-					Cardiologista
-				</button>
-			</div>
-			<div class="card-footer mt-4">
-				<button class="btn w-100 btn-primary">Ver Mais</button>
+		<div class="col">
+			<div class="card">
+				<img
+					src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+					class="card-img-top"
+					alt="Hollywood Sign on The Hill"
+				/>
+				<div class="card-body">
+					<h3 class="card-title">Jerson Silva</h3>
+					<p class="card-subtitle text-primary">04/06/2024 - 18:00</p>
+					<button class="btn btn-sm mt-2 btn-outline-primary">
+						Cardiologista
+					</button>
+				</div>
+				<div class="card-footer mt-4">
+					<button class="btn w-100 btn-primary">Ver Mais</button>
+				</div>
 			</div>
 		</div>
 	</div>
 </section>
+
+<!-- Section: Sobre Nós-->
+<section class="container-fluid p-md-5 bg-body-tertiary mb-10 mb-md-5">
+	<div class="text-center fw-bold mb-8">
+		<h6 class="mb-0 fs-6 text-uppercase">Sobre Nós</h6>
+		<h3 class="display-6 text-primary">Conheça nossos valores</h3>
+	</div>
+	<div class="row gap-5 gap-md-0 justify-content-evenly">
+		<div class="text-center col-lg-3">
+			<div class="badge badge-primary mb-4 p-3 rounded-6">
+				<i class="fa-solid fs-3 fa-bullseye"></i>
+			</div>
+			<h3 class="fw-bold">Missão</h3>
+			<p>
+				Fundado com a missão de proporcionar atendimento de excelência,
+				nosso hospital se dedica ao bem-estar e à saúde de nossos
+				pacientes.
+			</p>
+		</div>
+		<div class="text-center col-lg-3">
+			<div class="badge badge-primary mb-4 p-3 rounded-6">
+				<i class="fa-solid fs-3 fa-hand-holding-medical"></i>
+			</div>
+			<h3 class="fw-bold">Melhor Atendimento</h3>
+			<p>
+				Valorizamos a humanização no atendimento, integrando tecnologia
+				de ponta com um cuidado compassivo e personalizado.
+			</p>
+		</div>
+		<div class="text-center col-lg-3">
+			<div class="badge badge-primary mb-4 p-3 rounded-6">
+				<i class="fa-regular fs-3 fa-star"></i>
+			</div>
+			<h3 class="fw-bold">Serviços de Qualidade</h3>
+			<p>
+				Estamos continuamente inovando e aprimorando nossos serviços
+				para atender às necessidades da comunidade e promover a saúde de
+				forma integral.
+			</p>
+		</div>
+	</div>
+</section>
+
+<!-- Section: Conheça nossos Médicos -->
 <section class="container-fluid p-md-5 mb-10 mb-md-5">
 	<div class="row justify-content-around gap-3 gap-md-0 align-items-center">
-		<div class="col-md-4 p-3">
+		<div class="col-md col-lg-4 ">
 			<img
 				src="../../../static/img/foto-medico.png"
 				alt="Trendy Pants and Shoes"
-				class="img-fluid rounded"
+				class="img-fluid"
 			/>
 		</div>
-		<div class="col-md-4 text-center text-md-start">
+		<div class="col-md col-lg-5 text-center text-md-start">
 			<h6 class="text-secondary">
 				Bem vindo ao nosso Centro profissional
 			</h6>
@@ -109,26 +159,5 @@
 		</div>
 	</div>
 </section>
-<section class="container-fluid p-md-5 text-center mb-10 mb-md-5">
-	<h3 class="text-center display-6 mb-4 text-primary">Sobre Nós</h3>
-	<p class="lead">
-		Fundado com a missão de proporcionar atendimento de excelência, nosso
-		hospital se dedica ao bem-estar e à saúde de nossos pacientes. Com uma
-		equipe de profissionais altamente qualificados e infraestrutura moderna,
-		oferecemos uma ampla gama de serviços médicos, desde consultas de rotina
-		até procedimentos complexos.
-	</p>
-	<p class="lead">
-		Valorizamos a humanização no atendimento, integrando tecnologia de ponta
-		com um cuidado compassivo e personalizado. Nosso compromisso é garantir
-		que cada paciente receba o melhor tratamento possível, em um ambiente
-		acolhedor e seguro
-	</p>
-	<p class="lead">
-		Estamos continuamente inovando e aprimorando nossos serviços para
-		atender às necessidades da comunidade e promover a saúde de forma
-		integral. No nosso hospital, você encontra mais do que um serviço de
-		saúde – encontra um parceiro dedicado à sua qualidade de vida.
-	</p>
-</section>
+
 {% endblock %}

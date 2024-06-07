@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-*">
+<nav class="navbar sticky-top bg-body-secondary shadow navbar-expand-lg bg-*">
 	<!-- Container wrapper -->
 	<div class="container gap-4">
 		<!-- Toggle button -->
@@ -14,32 +14,34 @@
 		>
 			<i class="fas fa-bars"></i>
 		</button>
-
+		<!-- Navbar brand -->
+		<a class="navbar-brand text-success fw-bold gap-1 mt-2 mt-lg-0" href="home">
+			Clínica <span class="text-primary"> Médica</span>
+			<img
+				class="ms-2"
+				src="../../../static/img/logo.png"
+				height="40"
+				alt="Logo Clinica Medica"
+				loading="lazy"
+			/>
+		</a>
 		<!-- Collapsible wrapper -->
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<!-- Navbar brand -->
-			<a class="navbar-brand fw-bold gap-1 mt-2 mt-lg-0" href="home">
-				Clínica <span class="text-primary"> Médica</span>
-				<img
-					class="ms-2"
-					src="../../../static/img/logo.png"
-					height="40"
-					alt="Logo Clinica Medica"
-					loading="lazy"
-				/>
-			</a>
 			<!-- Left links -->
-			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-				<li class="nav-item">
-					<a class="nav-link" href="home">Início</a>
+			<ul class="navbar-nav ms-auto mb-2 gap-3 mb-lg-0">
+				<li class="nav-item hover-primary">
+					<a class="btn btn-link" href="home">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="agendamentos"
+					<a class="btn btn-link" href="agendamentos"
 						>Agendamento de Consultas</a
 					>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="perfil">Perfil</a>
+					<a class="btn btn-link" href="perfil">
+						Perfil
+						<i class="fas fa-circle-user ms-2"></i>
+					</a>
 				</li>
 			</ul>
 		</div>
