@@ -12,5 +12,9 @@ def home(request):
     return render(request, "pages/home.html")
 
 
-def agenda_consultas(request):
-    return render(request, "pages/agendamentos.html")
+def appointments(request):
+    return render(request, "pages/appointments.html")
+
+
+def profile(request):
+    return render(request, "pages/profile.html")

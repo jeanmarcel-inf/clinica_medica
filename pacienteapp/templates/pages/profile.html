@@ -1,0 +1,323 @@
+{% extends "../layouts/base.html" %} {% block title %}Perfil{% endblock %} {% block content %}
+<section style="background-color: #eee">
+	<div class="container py-5">
+		<div class="row">
+			<div class="col-lg-4 gap-3">
+				<!-- Paciente Card -->
+				<div class="card mb-4">
+					<div class="card-body text-center">
+						<img
+							src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+							alt="avatar"
+							class="rounded-circle img-fluid"
+							style="width: 150px"
+						/>
+						<h5 class="mb-2 mt-3">Jean Marcel</h5>
+						<p class="text-muted mb-3">
+							Bay Area, San Francisco, CA
+						</p>
+						<div class="d-flex justify-content-center mb-2">
+							<button
+								type="button"
+								data-mdb-button-init
+								data-mdb-ripple-init
+								class="btn btn-primary"
+							>
+								Editar Informações
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Alergias Card -->
+				<div class="card mb-4 mb-lg-0">
+					<div class="card-body">
+						<p class="text-primary">Alergias</p>
+						<ul
+							class="list-group list-group-light list-group-small"
+						>
+							<li class="list-group-item">An item</li>
+							<li class="list-group-item">A second item</li>
+							<li class="list-group-item">A third item</li>
+							<li class="list-group-item">A fourth item</li>
+							<li class="list-group-item">And a fifth one</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Medicamentos Card -->
+				<div class="card my-4 mb-lg-0">
+					<div class="card-body">
+						<p class="text-primary">Medicamentos em Uso</p>
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Medicamento</th>
+									<th scope="col">Dosagem</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Cocaína</td>
+									<td>2g</td>
+								</tr>
+								<tr>
+									<td>Codeína</td>
+									<td>500mg</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-8">
+				<!-- Detalhes do Paciente Card -->
+				<div class="card mb-4">
+					<div class="card-body">
+						<p class="text-primary">Suas Informações</p>
+						<div class="row">
+							<div class="col-sm-3">
+								<p class="mb-0">Nome Completo</p>
+							</div>
+							<div class="col-sm-9">
+								<p class="text-muted mb-0">Jean Marcel</p>
+							</div>
+						</div>
+						<hr />
+						<div class="row">
+							<div class="col-sm-3">
+								<p class="mb-0">Email</p>
+							</div>
+							<div class="col-sm-9">
+								<p class="text-muted mb-0">
+									example@example.com
+								</p>
+							</div>
+						</div>
+						<hr />
+						<div class="row">
+							<div class="col-sm-3">
+								<p class="mb-0">Celular</p>
+							</div>
+							<div class="col-sm-9">
+								<p class="text-muted mb-0">(097) 234-5678</p>
+							</div>
+						</div>
+						<hr />
+						<div class="row">
+							<div class="col-sm-3">
+								<p class="mb-0">Data de Nascimento</p>
+							</div>
+							<div class="col-sm-9">
+								<p class="text-muted mb-0">06/06/2024</p>
+							</div>
+						</div>
+						<hr />
+						<div class="row">
+							<div class="col-sm-3">
+								<p class="mb-0">Endereço</p>
+							</div>
+							<div class="col-sm-9">
+								<p class="text-muted mb-0">
+									Bay Area, San Francisco, CA
+								</p>
+							</div>
+						</div>
+						<hr class="hr hr-blurry my-5" />
+						<div class="row">
+							<div class="col col-sm-4 text-center">
+								<h2 class="text-primary">74 kg</h2>
+								<h4>Peso</h4>
+							</div>
+							<div class="col col-sm-4 text-center">
+								<h2 class="text-primary">195 cm</h2>
+								<h4>Altura</h4>
+							</div>
+							<div class="col col-sm-4 text-center">
+								<h2 class="text-primary">O+</h2>
+								<h4 class="">Tipo Sanguíneo</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				
+				<div class="row">
+					<div class="col">
+
+						<!-- Histórico de Consultas Card-->
+						<div class="card mb-4 mb-md-0">
+							<div class="card-body">
+								<p class="text-primary font-italic mb-4">
+									Histórico de Consultas
+								</p>
+								<table
+									class="table table-hover table-sm align-middle mb-0 bg-white"
+								>
+									<thead class="bg-light">
+										<tr>
+											<th>Médico</th>
+											<th class="d-none d-lg-table-cell">
+												Especialidade
+											</th>
+											<th class="d-none d-lg-table-cell">
+												Status
+											</th>
+											<th>Detalhes</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<div
+													class="d-flex align-items-center"
+												>
+													<img
+														src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+														alt=""
+														style="
+															width: 45px;
+															height: 45px;
+														"
+														class="rounded-circle"
+													/>
+													<div class="ms-3">
+														<p class="fw-bold mb-0">
+															John Doe
+														</p>
+														<p
+															class="text-muted mb-0 d-none d-md-table-cell"
+														>
+															06/06/2024
+														</p>
+													</div>
+												</div>
+											</td>
+											<td class="d-none d-lg-table-cell">
+												<p class="fw-normal mb-0">
+													Cardiologista
+												</p>
+											</td>
+											<td class="d-none d-lg-table-cell">
+												<span
+													class="badge badge-success rounded-pill d-inline"
+													>Concluída</span
+												>
+											</td>
+											<td>
+												<button
+													type="button"
+													class="btn btn-primary btn-floating btn-sm"
+													data-mdb-ripple-init
+												>
+													<i class="fas fa-align-justify"></i>
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div
+													class="d-flex align-items-center"
+												>
+													<img
+														src="https://mdbootstrap.com/img/new/avatars/6.jpg"
+														class="rounded-circle"
+														alt=""
+														style="
+															width: 45px;
+															height: 45px;
+														"
+													/>
+													<div class="ms-3">
+														<p class="fw-bold mb-0">
+															Alex Ray
+														</p>
+														<p
+															class="text-muted mb-0 d-none d-md-table-cell"
+														>
+															04/06/2024
+														</p>
+													</div>
+												</div>
+											</td>
+											<td class="d-none d-lg-table-cell">
+												<p class="fw-normal mb-1">
+													Endócrino
+												</p>
+											</td>
+											<td class="d-none d-lg-table-cell">
+												<span
+													class="badge badge-primary rounded-pill d-inline"
+													>Agendada</span
+												>
+											</td>
+											<td>
+												<button
+													type="button"
+													class="btn btn-primary btn-floating btn-sm"
+													data-mdb-ripple-init
+												>
+													<i class="fas fa-align-justify"></i>
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div
+													class="d-flex align-items-center"
+												>
+													<img
+														src="https://mdbootstrap.com/img/new/avatars/7.jpg"
+														class="rounded-circle"
+														alt=""
+														style="
+															width: 45px;
+															height: 45px;
+														"
+													/>
+													<div class="ms-3">
+														<p class="fw-bold mb-0">
+															Kate Hunington
+														</p>
+														<p
+															class="text-muted mb-0 d-none d-md-table-cell"
+														>
+															25/03/2022
+														</p>
+													</div>
+												</div>
+											</td>
+											<td class="d-none d-lg-table-cell">
+												<p class="fw-normal mb-1">
+													Otorrinolaringologista
+												</p>
+											</td>
+											<td class="d-none d-lg-table-cell">
+												<span
+													class="badge badge-warning rounded-pill d-inline"
+													>Cancelada</span
+												>
+											</td>
+											<td>
+												<button
+													type="button"
+													class="btn btn-primary btn-floating btn-sm"
+													data-mdb-ripple-init
+												>
+													<i class="fas fa-align-justify"></i>
+												</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
