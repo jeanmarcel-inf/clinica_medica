@@ -1,5 +1,4 @@
-{% extends "../layouts/base.html" %} {% block title %}Perfil{% endblock %} {% block content %}
-{% include "../includes/navigation.html" %}
+{% extends "../layouts/base.html" %} {% block title %}Perfil{% endblock %} {% block content %} {% include "../includes/navigation.html" %}
 <section style="background-color: #eee">
 	<div class="container py-5">
 		<div class="row">
@@ -17,14 +16,15 @@
 						<p class="text-muted mb-3">
 							Bay Area, San Francisco, CA
 						</p>
-						<div class="d-flex justify-content-center mb-2">
+						<div class="d-flex justify-content-center gap-3 mb-2">
 							<button
 								type="button"
 								data-mdb-button-init
 								data-mdb-ripple-init
-								class="btn btn-primary"
+								class="btn btn-outline-danger"
 							>
-								Editar Informações
+								Sair da Conta
+								<i class="fa-solid ms-2 fa-right-from-bracket"></i>
 							</button>
 						</div>
 					</div>
@@ -33,7 +33,14 @@
 				<!-- Alergias Card -->
 				<div class="card mb-4 mb-lg-0">
 					<div class="card-body">
-						<p class="text-primary">Alergias</p>
+						<div class="d-flex ">
+							<p class="text-primary">
+								Alergias
+							</p>
+							<button type="button" class="btn btn-secondary btn-sm btn-floating ms-auto" data-mdb-ripple-init>
+								<i class="fa-regular fa-pen-to-square"></i>
+							</button>
+						</div>
 						<ul
 							class="list-group list-group-light list-group-small"
 						>
@@ -49,7 +56,14 @@
 				<!-- Medicamentos Card -->
 				<div class="card my-4 mb-lg-0">
 					<div class="card-body">
-						<p class="text-primary">Medicamentos em Uso</p>
+						<div class="d-flex ">
+							<p class="text-primary">
+								Medicamentos em Uso
+							</p>
+							<button type="button" class="btn btn-secondary btn-sm btn-floating ms-auto" data-mdb-ripple-init>
+								<i class="fa-regular fa-pen-to-square"></i>
+							</button>
+						</div>
 						<table class="table">
 							<thead>
 								<tr>
@@ -76,7 +90,15 @@
 				<!-- Detalhes do Paciente Card -->
 				<div class="card mb-4">
 					<div class="card-body">
-						<p class="text-primary">Suas Informações</p>
+						<div class="d-flex">
+							<p class="text-primary">
+								Suas Informações 
+							</p>
+							<button type="button" class="btn btn-secondary btn-sm btn-floating ms-auto" data-mdb-ripple-init>
+								<i class="fa-regular fa-pen-to-square"></i>
+							</button>
+						</div>
+						
 						<div class="row">
 							<div class="col-sm-3">
 								<p class="mb-0">Nome Completo</p>
@@ -143,10 +165,8 @@
 					</div>
 				</div>
 
-				
 				<div class="row">
 					<div class="col">
-
 						<!-- Histórico de Consultas Card-->
 						<div class="card mb-4 mb-md-0">
 							<div class="card-body">
@@ -212,7 +232,9 @@
 													class="btn btn-primary btn-floating btn-sm"
 													data-mdb-ripple-init
 												>
-													<i class="fas fa-align-justify"></i>
+													<i
+														class="fas fa-align-justify"
+													></i>
 												</button>
 											</td>
 										</tr>
@@ -259,7 +281,9 @@
 													class="btn btn-primary btn-floating btn-sm"
 													data-mdb-ripple-init
 												>
-													<i class="fas fa-align-justify"></i>
+													<i
+														class="fas fa-align-justify"
+													></i>
 												</button>
 											</td>
 										</tr>
@@ -306,7 +330,9 @@
 													class="btn btn-primary btn-floating btn-sm"
 													data-mdb-ripple-init
 												>
-													<i class="fas fa-align-justify"></i>
+													<i
+														class="fas fa-align-justify"
+													></i>
 												</button>
 											</td>
 										</tr>
@@ -314,7 +340,6 @@
 								</table>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
