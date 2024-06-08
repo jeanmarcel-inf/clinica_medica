@@ -5,16 +5,16 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return render(request, "pages/index.html")
+    return render(request, "pacienteapp/pages/index.html")
 
 
 def home(request):
-    return render(request, "pages/home.html")
+    return render(request, "pacienteapp/pages/home.html")
 
 
 def appointments(request):
-    return render(request, "pages/appointments.html")
+    return render(request, "pacienteapp/pages/appointments.html")
 
 
 def profile(request):
-    return render(request, "pages/profile.html")
+    return render(request, "pacienteapp/pages/profile.html")

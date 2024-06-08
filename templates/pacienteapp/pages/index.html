@@ -1,10 +1,15 @@
-{% extends "../layouts/base.html"%} {% block title%}Página Inicial{% endblock%}
-{% block content%} {% include "../includes/navigation-no-auth.html" %}
+{% extends "../layouts/base.html" %} 
+{% load static %}
+{% block title %}Página Inicial{% endblock %}
+
+{% block content %} 
+
+{% include "../includes/navigation-no-auth.html" %}
 <!-- Background image -->
 <div
 	class="bg-image"
 	style="
-		background-image: url('../../../static/img/hero-image.png');
+		background-image: url('{% static "img/hero-image.png" %}');
 		height: 100vh;
 	"
 >
@@ -17,7 +22,7 @@
 					Clínica Médica
 					<img
 						class="ms-2"
-						src="../../../static/img/logo.png"
+						src="{% static "img/logo.png" %}"
 						height="100"
 						alt="Logo Clinica Medica"
 						loading="lazy"

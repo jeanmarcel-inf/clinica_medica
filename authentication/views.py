@@ -4,12 +4,12 @@ from django.shortcuts import render
 
 
 def login(request):
-    return render(request, "authentication/login.html")
+    return render(request, "authentication/pages/login.html")
 
 
 def register(request):
-    return render(request, "authentication/register.html")
+    return render(request, "authentication/pages/register.html")
 
 
 def password_reset(request):
-    return render(request, "authentication/password-reset.html")
+    return render(request, "authentication/pages/password-reset.html")

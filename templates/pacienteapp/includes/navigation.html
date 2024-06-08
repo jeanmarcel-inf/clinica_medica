@@ -1,3 +1,5 @@
+{% load static %}
+
 <!-- Navbar -->
 <nav class="navbar sticky-top bg-body-secondary shadow navbar-expand-lg bg-*">
 	<!-- Container wrapper -->
@@ -19,7 +21,7 @@
 			Clínica <span class="text-primary"> Médica</span>
 			<img
 				class="ms-2"
-				src="../../../static/img/logo.png"
+				src="{% static "img/logo.png" %}"
 				height="40"
 				alt="Logo Clinica Medica"
 				loading="lazy"
