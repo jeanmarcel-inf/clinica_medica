@@ -10,16 +10,16 @@
 
 ### Rotas da aplicação
 
-paciente/
-paciente/home
-paciente/agendamentos
-paciente/perfil
-auth/login
-auth/register
-auth/password-reset
-medico/home
-medico/consultas
-medico/pacientes
+- paciente/
+- paciente/home
+- paciente/agendamentos
+- paciente/perfil
+- auth/login
+- auth/register
+- auth/password-reset
+- medico/home
+- medico/consultas
+- medico/pacientes
 
 ## Ferramentas Usadas / Documentação
  
