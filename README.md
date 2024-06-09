@@ -4,11 +4,29 @@
 - Este projeto está sendo realizado para a disciplina de "Laboratório de Desenvolvimento de Software" utilizando o framework Django da linguagem Python.
 - Consiste em um sistema web para agendamento de consultas médicas e gestão de usuários.
 
+## Como Usar
+- Na atual etapa do projeto, existem apenas páginas HTML estáticas.
+- Todas as páginas são acessadas via rota definida na aplicação de origem, em alguns é obrigatório explicitar a URL da rota que deseja acessar.
 
-## Documentação da Ferramenta
+### Rotas da aplicação
 
-- Todas as informações básicas e guias de uso da ferramenta Django estão presentes na documentação do mesmo
-- https://docs.djangoproject.com/en/5.0/
+paciente/
+paciente/home
+paciente/agendamentos
+paciente/perfil
+auth/login
+auth/register
+auth/password-reset
+medico/home
+medico/consultas
+medico/pacientes
+
+## Ferramentas Usadas / Documentação
+ 
+- MDBootstrap 5: https://mdbootstrap.com/docs/standard/getting-started/installation/
+- AdminLTE3: https://adminlte.io/docs/3.0/index.html
+- Bootstrap 5.3: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+- Django: https://docs.djangoproject.com/en/5.0/
 </br>
 
 ## Escopo do projeto / Minimundo
