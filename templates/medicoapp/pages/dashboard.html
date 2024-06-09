@@ -1,67 +1,149 @@
-{% extends "../layouts/base.html" %} {% block content %}
+{% extends "../layouts/base.html" %} {% block title %}Dashboard{% endblock %}
+{%block header_title %}Dashboard{% endblock %}
+{% block subtitle %}09/06/2024{% endblock %}
+{% block content %}
+
+<!-- Info Box Row-->
 <div class="row">
-	<div class="col-lg-6">
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-
-				<p class="card-text">
-					Some quick example text to build on the card title and make
-					up the bulk of the card's content.
-				</p>
-
-				<a href="#" class="card-link">Card link</a>
-				<a href="#" class="card-link">Another link</a>
+	<div class="col-4">
+		<div class="small-box bg-teal">
+			<div class="inner">
+				<h3>150</h3>
+				<p>Total de Consultas</p>
 			</div>
-		</div>
-
-		<div class="card card-primary card-outline">
-			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-
-				<p class="card-text">
-					Some quick example text to build on the card title and make
-					up the bulk of the card's content.
-				</p>
-				<a href="#" class="card-link">Card link</a>
-				<a href="#" class="card-link">Another link</a>
+			<div class="icon">
+				<i class="fa-regular fa-rectangle-list"></i>
 			</div>
-		</div>
-		<!-- /.card -->
-	</div>
-	<!-- /.col-md-6 -->
-	<div class="col-lg-6">
-		<div class="card">
-			<div class="card-header">
-				<h5 class="m-0">Featured</h5>
-			</div>
-			<div class="card-body">
-				<h6 class="card-title">Special title treatment</h6>
-
-				<p class="card-text">
-					With supporting text below as a natural lead-in to
-					additional content.
-				</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
-			</div>
-		</div>
-
-		<div class="card card-primary card-outline">
-			<div class="card-header">
-				<h5 class="m-0">Featured</h5>
-			</div>
-			<div class="card-body">
-				<h6 class="card-title">Special title treatment</h6>
-
-				<p class="card-text">
-					With supporting text below as a natural lead-in to
-					additional content.
-				</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
-			</div>
+			<a href="#" class="small-box-footer">
+				Mais Informações <i class="ml-2 fas fa-arrow-circle-right"></i>
+			</a>
 		</div>
 	</div>
-	<!-- /.col-md-6 -->
+	<div class="col-4">
+		<div class="small-box bg-info">
+			<div class="inner">
+				<h3>150</h3>
+				<p>Total de Pacientes</p>
+			</div>
+			<div class="icon">
+				<i class="fa-solid fa-user"></i>
+			</div>
+			<a href="#" class="small-box-footer">
+				Mais Informações <i class="ml-2 fas fa-arrow-circle-right"></i>
+			</a>
+		</div>
+	</div>
+	<div class="col-4">
+		<div class="small-box bg-purple">
+			<div class="inner">
+				<h3>150</h3>
+				<p>Consultas Finalizadas</p>
+			</div>
+			<div class="icon">
+				<i class="fa-solid fa-check-double"></i>
+			</div>
+			<a href="#" class="small-box-footer">
+				Mais Informações <i class="ml-2 fas fa-arrow-circle-right"></i>
+			</a>
+		</div>
+	</div>
 </div>
-<!-- /.row -->
+
+<!-- Cards Row -->
+<div class="row justify-content-between my-3">
+	<!-- Consultas de Hoje Card -->
+	<div class="col-md-6">
+		<div class="card card-outline card-primary">
+			<div class="card-header">
+				<h3 class="card-title">Consultas de Hoje</h3>
+				<div class="card-tools">
+					<!-- Buttons, labels, and many other things can be placed here! -->
+					<!-- Here is a label for example -->
+				</div>
+				<!-- /.card-tools -->
+			</div>
+			<!-- /.card-header -->
+			<div class="card-body p-0">
+				<ul class="list-group-flush p-0">
+					<li
+						class="list-group-item d-flex justify-content-between align-items-center"
+					>
+						<div class="ms-2 me-auto">
+							<div class="fw-bold">Fulano da Silva</div>
+							<span class="badge bg-primary">07:30</span>
+						</div>
+						<button class="btn btn-sm btn-primary">Detalhes</button>
+					</li>
+					<li
+						class="list-group-item d-flex justify-content-between align-items-center"
+					>
+						<div class="ms-2 me-auto">
+							<div class="fw-bold">Fulano da Silva</div>
+							<span class="badge bg-primary">07:30</span>
+						</div>
+						<button class="btn btn-sm btn-primary">Detalhes</button>
+					</li>
+					<li
+						class="list-group-item d-flex justify-content-between align-items-center"
+					>
+						<div class="ms-2 me-auto">
+							<div class="fw-bold">Fulano da Silva</div>
+							<span class="badge bg-primary">07:30</span>
+						</div>
+						<button class="btn btn-sm btn-primary">Detalhes</button>
+					</li>
+				</ul>
+			</div>
+
+			<div class="card-footer text-center">
+				<a href="#" class="link">Ver Todos</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- Próximo Paciente Card -->
+	<div class="col-md-6">
+		<div class="card card-outline card-primary">
+			<div class="card-header">
+				<h3 class="card-title">Próximo Paciente</h3>
+			</div>
+			<!-- /.card-header -->
+			<div class="card-body">
+				<div class="row">
+					<div class="col">
+						<h4 class="fw-bold mb-0">Fulano da Silva</h4>
+						<div>
+							<small class="mr-3">Sexo: Masculino</small>
+							<small>Idade: 56</small>
+						</div>
+						<span class="badge bg-primary">07:30</span>
+						<div class="mt-4">
+							<button class="btn btn-primary">
+								Acessar ficha médica
+							</button>
+						</div>
+					</div>
+					<div class="ms-auto">
+						<div class="text-center">
+							<div class="btn-lg bg-navy mb-2 rounded-circle">
+								<i class="fa-solid fa-weight-scale"></i>
+							</div>
+							<h6>76kg</h6>
+						</div>
+						<div class="text-center">
+							<div class="btn-lg mb-2 bg-navy rounded-circle">
+								<i class="fa-solid fa-ruler-vertical"></i>
+							</div>
+							<h6>185cm</h6>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card-footer text-center">
+				<a href="#" class="link">Ver Todos</a>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}

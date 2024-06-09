@@ -1,0 +1,137 @@
+{% extends "../layouts/base.html" %} {% block title %}Consultas{% endblock %}
+{%block header_title %}Consultas{% endblock %} {% block content%}
+<div class="row">
+	<div class="col-4">
+		<div class="small-box bg-teal">
+			<div class="inner">
+				<h3>150</h3>
+				<p>Total de Consultas</p>
+			</div>
+			<div class="icon">
+				<i class="fa-regular fa-rectangle-list"></i>
+			</div>
+		</div>
+	</div>
+	<div class="col-4">
+		<div class="small-box bg-info">
+			<div class="inner">
+				<h3>150</h3>
+				<p>Total de Pacientes</p>
+			</div>
+			<div class="icon">
+				<i class="fa-solid fa-user"></i>
+			</div>
+		</div>
+	</div>
+	<div class="col-4">
+		<div class="small-box bg-purple">
+			<div class="inner">
+				<h3>150</h3>
+				<p>Consultas Finalizadas</p>
+			</div>
+			<div class="icon">
+				<i class="fa-solid fa-check-double"></i>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="col">
+	<div class="card card-outline card-success">
+		<div class="card-header">
+			<!-- Barra de Pesquisa Form -->
+			<form action="#">
+				<div class="row">
+					<div class="col">
+						<div class="form-group">
+							<div class="input-group input-group w-50">
+								<input
+									type="search"
+									class="form-control form-control"
+									placeholder="Barra de Pesquisa"
+								/>
+								<div class="input-group-append">
+									<button
+										type="submit"
+										class="btn btn btn-default"
+									>
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+                    <div>
+                        <button class="btn btn-primary">
+					        <i class="fa-solid fa-filter"></i>
+				        </button>
+                    </div>
+				</div>
+			</form>
+		</div>
+		<!-- /.card-header -->
+
+		<div class="card-body p-0">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Paciente</th>
+						<th scope="col">Data da Consulta</th>
+						<th scope="col">Status</th>
+						<th scope="col"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">1</th>
+						<td>Jean Marcel Maia</td>
+						<td>09/06/2024</td>
+						<td>
+                            <span class="badge rounded-pill p-1 px-2 bg-primary">Agendada</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary">
+                                <i class="fa-solid fa-file-invoice"></i>
+                            </button>
+                        </td>
+					</tr>
+					<tr>
+						<th scope="row">2</th>
+						<td>Fulano Maia</td>
+						<td>28/02/2024</td>
+						<td>
+                            <span class="badge rounded-pill p-1 px-2 bg-success">Concluída</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary">
+                                <i class="fa-solid fa-file-invoice"></i>
+                            </button>
+                        </td>
+					</tr>
+					<tr>
+						<th scope="row">3</th>
+						<td>Ciclano da Silva</td>
+						<td>12/05/2022</td>
+						<td>
+                            <span class="badge rounded-pill p-1 px-2 bg-warning">Cancelada</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary">
+                                <i class="fa-solid fa-file-invoice"></i>
+                            </button>
+                        </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- /.card-body -->
+
+		<div class="card-footer">
+            {% include "../includes/pagination.html" %}
+        </div>
+		<!-- /.card-footer -->
+	</div>
+	<!-- /.card -->
+</div>
+{% endblock %}

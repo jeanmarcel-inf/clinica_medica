@@ -4,5 +4,11 @@ from django.http import HttpResponse
 # Create your views here.
 
 
-def dashboard(request):
+def home(request):
     return render(request, "medicoapp/pages/dashboard.html")
+
+def appointments(request):
+    return render(request, "medicoapp/pages/appointments.html")
+
+def patients(request):
+    return render(request, "medicoapp/pages/patients.html")
