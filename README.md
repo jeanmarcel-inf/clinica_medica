@@ -5,7 +5,7 @@
 - Consiste em um sistema web para agendamento de consultas médicas e gestão de usuários.
 
 ## Como Usar
-- Na atual etapa do projeto, existem apenas páginas HTML estáticas.
+- Na atual etapa do projeto, existem apenas conteúdos estáticos (html, css, js).
 - Todas as páginas são acessadas via rota definida na aplicação de origem, em alguns é obrigatório explicitar a URL da rota que deseja acessar.
 
 ### Rotas da aplicação
