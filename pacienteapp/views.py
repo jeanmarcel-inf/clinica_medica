@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from medicoapp.models import Medico
+from .models import Paciente
 
 # Create your views here.
 
@@ -13,8 +14,10 @@ def home(request):
 
 
 def appointments(request):
-    return render(request, "pacienteapp/pages/appointments.html")
+    medicos = Medico.objects.all()
+    return render(request, "pacienteapp/pages/appointments.html", {"medics": medicos})
 
 
 def profile(request):
-    return render(request, "pacienteapp/pages/profile.html")
+    patients = Paciente.objects.all()
+    return render(request, "pacienteapp/pages/profile.html", {"patients": patients})

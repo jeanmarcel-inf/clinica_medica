@@ -21,8 +21,9 @@
 		</div>
 	</div>
 
-	<div class="row justify-content-center justify-content-md-start">
+	<div class="row justify-content-center gap-5 justify-content-lg-start">
 		<!-- Card -->
+		{% for medico in medics %}
 		<div class="card" style="width: 20rem">
 			<img
 				src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
@@ -30,10 +31,10 @@
 				alt="Sunset Over the Sea"
 			/>
 			<div class="card-body">
-				<h3 class="card-title">Jerson Silva</h3>
-				<p class="card-subtitle text-primary">CRM - 000000RJ</p>
+				<h3 class="card-title">{{medico.name}}</h3>
+				<p class="card-subtitle text-primary">CRM - {{medico.crm}}</p>
 				<button class="btn btn-sm mt-2 btn-outline-primary">
-					Cardiologista
+					{{medico.especialidades.all.first}}
 				</button>
 			</div>
 			<!-- Button trigger modal -->
@@ -52,8 +53,7 @@
 				id="exampleModal"
 				tabindex="-1"
 				aria-labelledby="exampleModalLabel"
-				aria-hidden="true"
-			>
+				aria-hidden="true">
 				<div class="modal-dialog modal-lg">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -178,7 +178,7 @@
 									<button
 										class="btn btn-outline-primary btn-lg"
 									>
-										8:00
+										19:00
 									</button>
 								</div>
 							</div>
@@ -212,6 +212,8 @@
 				</div>
 			</div>
 		</div>
+		{% endfor %}
+		
 	</div>
 </div>
 
