@@ -6,7 +6,7 @@ from .models import *
 admin.site.register(Especialidade)
 
 class MedicoAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "email", "cpf", "crm", "get_especialidades" )
+    list_display = ("id", "first_name", "email", "cpf", "crm", "get_especialidades" )
 
     # --- INFO: Método get para campo especialidades dentro de Medico, busca por toda instancia de Especialidade associada com o id do Medico.
     def get_especialidades(self, obj):
