@@ -25,6 +25,11 @@ class PacienteAdmin(UserAdmin):
 admin.site.register(Paciente, PacienteAdmin)
 
 class ConsultaAdmin(admin.ModelAdmin):
-    list_display = ("id", "patient", "medico", "date_time", "description", "status")
+    # Refatorar essa macacada
+    Consulta.get_patient_full_name.short_description = "Paciente"
+    Consulta.get_medic_full_name.short_description = "Medico"
+
+    list_display = ("id", "get_patient_full_name", "get_medic_full_name", "date_time", "description", "status")
+
 admin.site.register(Consulta, ConsultaAdmin)
 admin.site.register(StatusConsulta)

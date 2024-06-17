@@ -20,3 +20,9 @@ class Consulta(models.Model):
     date_time = models.DateTimeField()
     description = models.TextField(max_length=200)
     status = models.ForeignKey(StatusConsulta, on_delete=models.CASCADE)
+
+    def get_patient_full_name(self):
+        return self.patient.first_name + ' ' + self.patient.last_name
+    
+    def get_medic_full_name(self):
+        return self.medico.first_name + ' ' + self.medico.last_name
