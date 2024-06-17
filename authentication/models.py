@@ -19,6 +19,13 @@ class User(AbstractBaseUser, PermissionsMixin):
         help_text='Digite seu CPF (somente números).'
     )
     date_of_birth = models.DateField(null=True, blank=True, help_text='Formato: AAAA-MM-DD')
+
+    GENDER_CHOICES = [
+        ('M', 'Masculino' ),
+        ('F', 'Feminino' )
+    ]
+
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 

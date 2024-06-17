@@ -4,7 +4,7 @@ from .models import Paciente, Consulta, StatusConsulta
 # Register your models here.
 
 class PacienteAdmin(admin.ModelAdmin):
-    list_display = ("id", "first_name", "cpf", "email", "gender", "address" )
+    list_display = ("id", "first_name", "cpf", "email", "address" )
 
 admin.site.register(Paciente, PacienteAdmin)
 

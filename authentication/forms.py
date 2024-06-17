@@ -21,7 +21,10 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email', 'cpf', 'date_of_birth')
+        fields = ('first_name', 'last_name', 'email', 'cpf', 'date_of_birth', 'gender')
+        labels = {
+            'gender': 'Sexo'
+        }
         widgets = {
             'first_name': forms.TextInput(attrs={
                 'class': 'form-control form-control-lg',
@@ -43,17 +46,20 @@ class CustomUserCreationForm(UserCreationForm):
                 'class': 'form-control form-control-lg',
                 'placeholder': 'Data de Nascimento',
             }),
+            'gender': forms.Select(attrs={
+                'class': 'form-control form-control-lg',
+                'placeholder': 'Sexo',
+            }),
         }
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['cpf'].required = True  # Se você quiser que o CPF seja obrigatório
 
-
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = User  # Use o seu modelo de usuário personalizado
-        fields = ('email', 'cpf', 'date_of_birth')  # Inclua o campo CPF aqui
+        fields = ('email', 'cpf', 'date_of_birth', 'gender')  # Inclua o campo CPF aqui
 
 
 class CustomAuthenticationForm(AuthenticationForm):

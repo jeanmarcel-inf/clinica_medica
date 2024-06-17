@@ -6,7 +6,6 @@ from medicoapp.models import Medico
 
 class Paciente(User):
     cellphone_number = models.CharField(max_length=50, null=True, blank=True)
-    gender = models.CharField(max_length=20)
     address = models.CharField(max_length=100)
 
 class StatusConsulta(models.Model):
