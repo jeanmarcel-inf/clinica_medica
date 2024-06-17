@@ -31,7 +31,3 @@ def login_view(request):
 
 def password_reset(request):
     return render(request, "authentication/pages/password-reset.html")
-
-
-def success(request):
-    return render(request, "authentication/pages/success.html")
