@@ -12,32 +12,33 @@
 							class="rounded-circle img-fluid"
 							style="width: 150px"
 						/>
-						<h5 class="mb-2 mt-3">Jean Marcel</h5>
+						<h5 class="mb-2 mt-3">{{user.first_name}}</h5>
 						<p class="text-muted mb-3">
 							Bay Area, San Francisco, CA
 						</p>
-						<div class="d-flex justify-content-center gap-3 mb-2">
-							<button
-								type="button"
-								data-mdb-button-init
-								data-mdb-ripple-init
-								class="btn btn-outline-danger"
-							>
+						<form action="/auth/logout" method="post">
+							{% csrf_token %}
+							<button class="btn btn-danger">
 								Sair da Conta
-								<i class="fa-solid ms-2 fa-right-from-bracket"></i>
+								<i
+									class="fa-solid ms-2 fa-right-from-bracket"
+								></i>
 							</button>
-						</div>
+						</form>
 					</div>
 				</div>
 
+				{% comment %}
 				<!-- Alergias Card -->
 				<div class="card mb-4 mb-lg-0">
 					<div class="card-body">
-						<div class="d-flex ">
-							<p class="text-primary">
-								Alergias
-							</p>
-							<button type="button" class="btn btn-secondary btn-sm btn-floating ms-auto" data-mdb-ripple-init>
+						<div class="d-flex">
+							<p class="text-primary">Alergias</p>
+							<button
+								type="button"
+								class="btn btn-secondary btn-sm btn-floating ms-auto"
+								data-mdb-ripple-init
+							>
 								<i class="fa-regular fa-pen-to-square"></i>
 							</button>
 						</div>
@@ -56,11 +57,13 @@
 				<!-- Medicamentos Card -->
 				<div class="card my-4 mb-lg-0">
 					<div class="card-body">
-						<div class="d-flex ">
-							<p class="text-primary">
-								Medicamentos em Uso
-							</p>
-							<button type="button" class="btn btn-secondary btn-sm btn-floating ms-auto" data-mdb-ripple-init>
+						<div class="d-flex">
+							<p class="text-primary">Medicamentos em Uso</p>
+							<button
+								type="button"
+								class="btn btn-secondary btn-sm btn-floating ms-auto"
+								data-mdb-ripple-init
+							>
 								<i class="fa-regular fa-pen-to-square"></i>
 							</button>
 						</div>
@@ -84,28 +87,32 @@
 						</table>
 					</div>
 				</div>
+				{% endcomment %}
 			</div>
 
-			
 			<div class="col-lg-8">
 				<!-- Detalhes do Paciente Card -->
 				<div class="card mb-4">
 					<div class="card-body">
 						<div class="d-flex">
-							<p class="text-primary">
-								Suas Informações 
-							</p>
-							<button type="button" class="btn btn-secondary btn-sm btn-floating ms-auto" data-mdb-ripple-init>
+							<p class="text-primary">Suas Informações</p>
+							<button
+								type="button"
+								class="btn btn-secondary btn-sm btn-floating ms-auto"
+								data-mdb-ripple-init
+							>
 								<i class="fa-regular fa-pen-to-square"></i>
 							</button>
 						</div>
-						
+
 						<div class="row">
 							<div class="col-sm-3">
 								<p class="mb-0">Nome Completo</p>
 							</div>
 							<div class="col-sm-9">
-								<p class="text-muted mb-0">Jean Marcel</p>
+								<p class="text-muted mb-0">
+									{{user.get_full_name}}
+								</p>
 							</div>
 						</div>
 						<hr />
@@ -114,9 +121,7 @@
 								<p class="mb-0">Email</p>
 							</div>
 							<div class="col-sm-9">
-								<p class="text-muted mb-0">
-									example@example.com
-								</p>
+								<p class="text-muted mb-0">{{user.email}}</p>
 							</div>
 						</div>
 						<hr />
@@ -125,7 +130,9 @@
 								<p class="mb-0">Celular</p>
 							</div>
 							<div class="col-sm-9">
-								<p class="text-muted mb-0">(021) 1234-5678</p>
+								<p class="text-muted mb-0">
+									{{user.cellphone_number}}
+								</p>
 							</div>
 						</div>
 						<hr />
@@ -134,10 +141,13 @@
 								<p class="mb-0">Data de Nascimento</p>
 							</div>
 							<div class="col-sm-9">
-								<p class="text-muted mb-0">06/06/2024</p>
+								<p class="text-muted mb-0">
+									{{user.date_of_birth}}
+								</p>
 							</div>
 						</div>
 						<hr />
+						{% comment %}
 						<div class="row">
 							<div class="col-sm-3">
 								<p class="mb-0">Endereço</p>
@@ -148,6 +158,7 @@
 								</p>
 							</div>
 						</div>
+						{% endcomment %} {% comment %}
 						<hr class="hr hr-blurry my-5" />
 						<div class="row">
 							<div class="col col-sm-4 text-center">
@@ -163,184 +174,170 @@
 								<h4 class="">Tipo Sanguíneo</h4>
 							</div>
 						</div>
+						{% endcomment %}
 					</div>
 				</div>
-
-				<div class="row">
-					<div class="col">
-						<!-- Histórico de Consultas Card-->
-						<div class="card mb-4 mb-md-0">
-							<div class="card-body">
-								<p class="text-primary font-italic mb-4">
-									Histórico de Consultas
-								</p>
-								<table
-									class="table table-hover table-sm align-middle mb-0 bg-white"
-								>
-									<thead class="bg-light">
-										<tr>
-											<th>Médico</th>
-											<th class="d-none d-lg-table-cell">
-												Especialidade
-											</th>
-											<th class="d-none d-lg-table-cell">
-												Status
-											</th>
-											<th>Detalhes</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>
-												<div
-													class="d-flex align-items-center"
-												>
-													<img
-														src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-														alt=""
-														style="
-															width: 45px;
-															height: 45px;
-														"
-														class="rounded-circle"
-													/>
-													<div class="ms-3">
-														<p class="fw-bold mb-0">
-															John Doe
-														</p>
-														<p
-															class="text-muted mb-0 d-none d-md-table-cell"
-														>
-															06/06/2024
-														</p>
-													</div>
-												</div>
-											</td>
-											<td class="d-none d-lg-table-cell">
-												<p class="fw-normal mb-0">
-													Cardiologista
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<!-- Histórico de Consultas Card-->
+				<div class="card mb-4 mb-md-0">
+					<div class="card-body">
+						<p class="text-primary font-italic mb-4">
+							Histórico de Consultas
+						</p>
+						<table
+							class="table table-hover table-sm align-middle mb-0 bg-white"
+						>
+							<thead class="bg-light">
+								<tr>
+									<th>Médico</th>
+									<th class="d-none d-lg-table-cell">
+										Especialidade
+									</th>
+									<th class="d-none d-lg-table-cell">
+										Status
+									</th>
+									<th>Detalhes</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<div class="d-flex align-items-center">
+											<img
+												src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+												alt=""
+												style="
+													width: 45px;
+													height: 45px;
+												"
+												class="rounded-circle"
+											/>
+											<div class="ms-3">
+												<p class="fw-bold mb-0">
+													John Doe
 												</p>
-											</td>
-											<td class="d-none d-lg-table-cell">
-												<span
-													class="badge badge-success rounded-pill d-inline"
-													>Concluída</span
+												<p
+													class="text-muted mb-0 d-none d-md-table-cell"
 												>
-											</td>
-											<td>
-												<button
-													type="button"
-													class="btn btn-primary btn-floating btn-sm"
-													data-mdb-ripple-init
-												>
-													<i
-														class="fas fa-align-justify"
-													></i>
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div
-													class="d-flex align-items-center"
-												>
-													<img
-														src="https://mdbootstrap.com/img/new/avatars/6.jpg"
-														class="rounded-circle"
-														alt=""
-														style="
-															width: 45px;
-															height: 45px;
-														"
-													/>
-													<div class="ms-3">
-														<p class="fw-bold mb-0">
-															Alex Ray
-														</p>
-														<p
-															class="text-muted mb-0 d-none d-md-table-cell"
-														>
-															04/06/2024
-														</p>
-													</div>
-												</div>
-											</td>
-											<td class="d-none d-lg-table-cell">
-												<p class="fw-normal mb-1">
-													Endócrino
+													06/06/2024
 												</p>
-											</td>
-											<td class="d-none d-lg-table-cell">
-												<span
-													class="badge badge-primary rounded-pill d-inline"
-													>Agendada</span
-												>
-											</td>
-											<td>
-												<button
-													type="button"
-													class="btn btn-primary btn-floating btn-sm"
-													data-mdb-ripple-init
-												>
-													<i
-														class="fas fa-align-justify"
-													></i>
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div
-													class="d-flex align-items-center"
-												>
-													<img
-														src="https://mdbootstrap.com/img/new/avatars/7.jpg"
-														class="rounded-circle"
-														alt=""
-														style="
-															width: 45px;
-															height: 45px;
-														"
-													/>
-													<div class="ms-3">
-														<p class="fw-bold mb-0">
-															Kate Hunington
-														</p>
-														<p
-															class="text-muted mb-0 d-none d-md-table-cell"
-														>
-															25/03/2022
-														</p>
-													</div>
-												</div>
-											</td>
-											<td class="d-none d-lg-table-cell">
-												<p class="fw-normal mb-1">
-													Otorrinolaringologista
+											</div>
+										</div>
+									</td>
+									<td class="d-none d-lg-table-cell">
+										<p class="fw-normal mb-0">
+											Cardiologista
+										</p>
+									</td>
+									<td class="d-none d-lg-table-cell">
+										<span
+											class="badge badge-success rounded-pill d-inline"
+											>Concluída</span
+										>
+									</td>
+									<td>
+										<button
+											type="button"
+											class="btn btn-primary btn-floating btn-sm"
+											data-mdb-ripple-init
+										>
+											<i class="fas fa-align-justify"></i>
+										</button>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="d-flex align-items-center">
+											<img
+												src="https://mdbootstrap.com/img/new/avatars/6.jpg"
+												class="rounded-circle"
+												alt=""
+												style="
+													width: 45px;
+													height: 45px;
+												"
+											/>
+											<div class="ms-3">
+												<p class="fw-bold mb-0">
+													Alex Ray
 												</p>
-											</td>
-											<td class="d-none d-lg-table-cell">
-												<span
-													class="badge badge-warning rounded-pill d-inline"
-													>Cancelada</span
+												<p
+													class="text-muted mb-0 d-none d-md-table-cell"
 												>
-											</td>
-											<td>
-												<button
-													type="button"
-													class="btn btn-primary btn-floating btn-sm"
-													data-mdb-ripple-init
+													04/06/2024
+												</p>
+											</div>
+										</div>
+									</td>
+									<td class="d-none d-lg-table-cell">
+										<p class="fw-normal mb-1">Endócrino</p>
+									</td>
+									<td class="d-none d-lg-table-cell">
+										<span
+											class="badge badge-primary rounded-pill d-inline"
+											>Agendada</span
+										>
+									</td>
+									<td>
+										<button
+											type="button"
+											class="btn btn-primary btn-floating btn-sm"
+											data-mdb-ripple-init
+										>
+											<i class="fas fa-align-justify"></i>
+										</button>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="d-flex align-items-center">
+											<img
+												src="https://mdbootstrap.com/img/new/avatars/7.jpg"
+												class="rounded-circle"
+												alt=""
+												style="
+													width: 45px;
+													height: 45px;
+												"
+											/>
+											<div class="ms-3">
+												<p class="fw-bold mb-0">
+													Kate Hunington
+												</p>
+												<p
+													class="text-muted mb-0 d-none d-md-table-cell"
 												>
-													<i
-														class="fas fa-align-justify"
-													></i>
-												</button>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
+													25/03/2022
+												</p>
+											</div>
+										</div>
+									</td>
+									<td class="d-none d-lg-table-cell">
+										<p class="fw-normal mb-1">
+											Otorrinolaringologista
+										</p>
+									</td>
+									<td class="d-none d-lg-table-cell">
+										<span
+											class="badge badge-warning rounded-pill d-inline"
+											>Cancelada</span
+										>
+									</td>
+									<td>
+										<button
+											type="button"
+											class="btn btn-primary btn-floating btn-sm"
+											data-mdb-ripple-init
+										>
+											<i class="fas fa-align-justify"></i>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
