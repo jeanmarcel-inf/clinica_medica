@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import CustomUserChangeForm, CustomUserCreationForm, CustomAuthenticationForm
+from .forms import PacienteCreationForm, CustomAuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 
@@ -8,12 +8,12 @@ from django.contrib.auth.decorators import login_required
 
 def register_view(request):
     if request.method == "POST":
-        form = CustomUserCreationForm(request.POST)
+        form = PacienteCreationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect("/auth/login")
     else:
-        form = CustomUserCreationForm()
+        form = PacienteCreationForm()
     return render(request, "authentication/pages/register.html", {"form": form})
 
 

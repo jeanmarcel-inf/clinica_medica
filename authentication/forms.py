@@ -1,8 +1,9 @@
 from django import forms
 from .models import User
+from pacienteapp.models import Paciente
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
 
-class CustomUserCreationForm(UserCreationForm):
+class PacienteCreationForm(UserCreationForm):
 
     password1 = forms.CharField(
         label='Password',
@@ -20,7 +21,7 @@ class CustomUserCreationForm(UserCreationForm):
     )
 
     class Meta:
-        model = User
+        model = Paciente
         fields = ('first_name', 'last_name', 'email', 'cpf', 'date_of_birth', 'gender')
         labels = {
             'gender': 'Sexo'
@@ -56,11 +57,11 @@ class CustomUserCreationForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         self.fields['cpf'].required = True  # Se você quiser que o CPF seja obrigatório
 
-class CustomUserChangeForm(UserChangeForm):
+
+class PacienteChangeForm(UserChangeForm):
     class Meta:
         model = User  # Use o seu modelo de usuário personalizado
         fields = ('email', 'cpf', 'date_of_birth', 'gender')  # Inclua o campo CPF aqui
-
 
 class CustomAuthenticationForm(AuthenticationForm):
     username = forms.EmailField(widget=forms.TextInput(attrs={

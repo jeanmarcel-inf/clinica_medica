@@ -12,5 +12,3 @@ class Especialidade(models.Model):
 class Medico(User):
     crm = models.CharField(max_length=20)
     especialidades = models.ManyToManyField(Especialidade)
-
-    USERNAME_FIELD = "name"
