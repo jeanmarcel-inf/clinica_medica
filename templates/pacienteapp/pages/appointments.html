@@ -1,9 +1,7 @@
-{% extends "../layouts/base.html" %} 
-{% block title %}Agendamentos{% endblock %}
-{% block content %}
-{% include "../includes/navigation.html" %}
+{% extends "../layouts/base.html" %} {% block title %}Agendamentos{% endblock %}
+{% block content %} {% include "../includes/navigation.html" %}
 
-<div class="container mb-5">
+<div class="container">
 	<div class="row gap-4 justify-content-between my-4 mt-5">
 		<select class="form-select w-25" aria-label="Default select example">
 			<option selected>Especialidade</option>
@@ -20,46 +18,62 @@
 			<label class="form-label" for="form3Example4">Data</label>
 		</div>
 	</div>
-
-	<div class="row justify-content-center gap-5 justify-content-lg-start">
-		<!-- Card -->
-		{% for medico in medics %}
-		<div class="card" style="width: 20rem">
-			<img
-				src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
-				class="card-img-top"
-				alt="Sunset Over the Sea"
-			/>
-			<div class="card-body">
-				<h3 class="card-title">{{medico.name}}</h3>
-				<p class="card-subtitle text-primary">CRM - {{medico.crm}}</p>
-				<button class="btn btn-sm mt-2 btn-outline-primary">
-					{{medico.especialidades.all.first}}
-				</button>
+</div>
+<div class="container-fluid mb-5">
+	<div
+		class="row row-cols-1 justify-content-evenly row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"
+	>
+		{% for consulta in consultas %}
+		<form method="post" class="col">
+			<div class="card">
+				<img
+					src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+					class="card-img-top"
+					alt="Hollywood Sign on The Hill"
+				/>
+				<div class="card-body">
+					<h3 class="card-title">
+						{{consulta.medico.get_full_name}}
+					</h3>
+					<p class="card-subtitle text-primary">
+						{{consulta.date_time.date}} -
+						{{consulta.date_time.time}}
+					</p>
+					<button class="btn btn-sm mt-2 btn-outline-primary">
+						Cardiologista
+					</button>
+				</div>
+				<div class="card-footer mt-3">
+					<button
+						type="button"
+						class="btn w-100 btn-primary"
+						data-bs-toggle="modal"
+						data-bs-target="#exampleModal"
+					>
+						Ver Horários
+					</button>
+				</div>
 			</div>
-			<!-- Button trigger modal -->
-			<button
-				type="button"
-				class="btn btn-lg btn-primary"
-				data-bs-toggle="modal"
-				data-bs-target="#exampleModal"
-			>
-				Ver Horários
-			</button>
-
 			<!-- Modal -->
 			<div
 				class="modal fade"
 				id="exampleModal"
 				tabindex="-1"
 				aria-labelledby="exampleModalLabel"
-				aria-hidden="true">
+				aria-hidden="true"
+			>
 				<div class="modal-dialog modal-lg">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h1 class="modal-title fs-5" id="exampleModalLabel">
-								Agendar Horário de Consulta
-							</h1>
+							<div>
+								<h1
+									class="modal-title fs-5"
+									id="exampleModalLabel"
+								>
+									Agendar Horário de Consulta
+								</h1>
+								<small>17/06/2024</small>
+							</div>
 							<button
 								type="button"
 								class="btn-close"
@@ -78,132 +92,57 @@
 									/>
 								</div>
 								<div class="col-8">
-									<span class="badge text-bg-primary mb-2">
-										Cardiologista
+									<h6 class="text-primary mb-1">
+										CRM - {{consulta.medico.crm}}
+									</h6>
+									<h2 class="text-break">
+										{{consulta.medico.get_full_name}}
+									</h2>
+									<span class="badge text-bg-primary mb-3">
+										{{consulta.medico.get_especialidade}}
 									</span>
-									<h2 class="text-break">Jerson Silva</h2>
-									<h6 class="text-primary">
-										CRM - 0000000RJ
+									<h6 class="text-secondary">
+										Sexo: {{consulta.medico.gender}}
 									</h6>
 									<h6 class="text-secondary">
-										Sexo: Masculino
-									</h6>
-									<h6 class="text-secondary">
-										Idade: 57 anos
+										Idade: {{consulta.medico.get_age}}
 									</h6>
 								</div>
 							</div>
 							<hr class="hr hr-blurry my-3" />
 
-							<!-- Lista -->
-							<div class="row g-3 my-3">
-								<div class="col-2">
-									<button
-										class="btn btn-outline-primary btn-lg"
+							<form action="post">
+								<!-- Lista -->
+								<div class="btn-group">
+									{% for modal_item in modal_items %}
+									{{form.date_time}}
+									<label
+										class="btn btn-outline-secondary"
+										for="{{form.date_time.id_for_label}}"
+										checked
+										data-mdb-ripple-init
+										>{{modal_item}}</label
 									>
-										8:00
-									</button>
+									{% endfor %}
 								</div>
-								<div class="col-2">
-									<button
-										class="btn btn-outline-primary btn-lg"
-									>
-										8:00
-									</button>
-								</div>
-								<div class="col-2">
-									<button
-										class="btn btn-outline-primary btn-lg"
-									>
-										8:00
-									</button>
-								</div>
-								<div class="col-2">
-									<button
-										class="btn btn-outline-primary btn-lg"
-									>
-										8:00
-									</button>
-								</div>
-								<div class="col-2">
-									<button
-										class="btn btn-outline-primary btn-lg"
-									>
-										8:00
-									</button>
-								</div>
-								<div class="col-2">
-									<button
-										class="btn btn-outline-primary btn-lg"
-									>
-										8:00
-									</button>
-								</div>
-								<div class="col-2">
-									<button
-										class="btn btn-outline-primary btn-lg"
-									>
-										8:00
-									</button>
-								</div>
-								<div class="col-2">
-									<button
-										class="btn btn-outline-primary btn-lg"
-									>
-										8:00
-									</button>
-								</div>
-								<div class="col-2">
-									<button
-										class="btn btn-outline-primary btn-lg"
-									>
-										8:00
-									</button>
-								</div>
-								<div class="col-2">
-									<button
-										class="btn btn-outline-primary btn-lg"
-									>
-										8:00
-									</button>
-								</div>
-								<div class="col-2">
-									<button
-										class="btn btn-outline-primary btn-lg"
-									>
-										8:00
-									</button>
-								</div>
-								<div class="col-2">
-									<button
-										class="btn btn-outline-primary btn-lg"
-									>
-										19:00
-									</button>
-								</div>
-							</div>
-							<div
-								data-mdb-input-init
-								class="form-outline mt-4 mb-2"
-							>
-								<textarea
-									class="form-control"
-									id="textAreaExample1"
-									rows="3"
-								></textarea>
-								<label class="form-label" for="textAreaExample"
-									>Razão da Consulta</label
+								<div
+									data-mdb-input-init
+									class="form-outline mt-4 mb-2"
 								>
-							</div>
+									<textarea
+										class="form-control"
+										id="textAreaExample1"
+										rows="3"
+									></textarea>
+									<label
+										class="form-label"
+										for="textAreaExample"
+										>Razão da Consulta</label
+									>
+								</div>
+							</form>
 						</div>
 						<div class="modal-footer">
-							<button
-								type="button"
-								class="btn btn-secondary"
-								data-bs-dismiss="modal"
-							>
-								Fechar
-							</button>
 							<button type="button" class="btn btn-primary">
 								Agendar
 							</button>
@@ -211,9 +150,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</form>
 		{% endfor %}
-		
 	</div>
 </div>
 

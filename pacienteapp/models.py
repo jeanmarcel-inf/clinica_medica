@@ -6,7 +6,9 @@ from medicoapp.models import Medico
 
 class Paciente(User):
     cellphone_number = models.CharField(max_length=50, null=True, blank=True)
-    address = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.get_full_name()
 
 class StatusConsulta(models.Model):
     title = models.CharField(max_length=20)
@@ -20,9 +22,6 @@ class Consulta(models.Model):
     date_time = models.DateTimeField()
     description = models.TextField(max_length=200)
     status = models.ForeignKey(StatusConsulta, on_delete=models.CASCADE)
-
-    def get_patient_full_name(self):
-        return self.patient.first_name + ' ' + self.patient.last_name
     
-    def get_medic_full_name(self):
-        return self.medico.first_name + ' ' + self.medico.last_name
+    def __str__(self):
+        return self.medico.first_name + ' consulta: ' + self.patient.first_name

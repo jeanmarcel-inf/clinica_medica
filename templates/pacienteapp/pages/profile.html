@@ -13,9 +13,6 @@
 							style="width: 150px"
 						/>
 						<h5 class="mb-2 mt-3">{{user.first_name}}</h5>
-						<p class="text-muted mb-3">
-							Bay Area, San Francisco, CA
-						</p>
 						<form action="/auth/logout" method="post">
 							{% csrf_token %}
 							<button class="btn btn-danger">
@@ -203,40 +200,32 @@
 								</tr>
 							</thead>
 							<tbody>
+								{% for consulta in consultas %}
+
 								<tr>
 									<td>
 										<div class="d-flex align-items-center">
-											<img
-												src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-												alt=""
-												style="
-													width: 45px;
-													height: 45px;
-												"
-												class="rounded-circle"
-											/>
 											<div class="ms-3">
 												<p class="fw-bold mb-0">
-													John Doe
+													{{consulta.medico.get_full_name}}
 												</p>
 												<p
 													class="text-muted mb-0 d-none d-md-table-cell"
 												>
-													06/06/2024
+													{{consulta.date_time}}
 												</p>
 											</div>
 										</div>
 									</td>
 									<td class="d-none d-lg-table-cell">
 										<p class="fw-normal mb-0">
-											Cardiologista
+											{{consulta.medico.get_especialidade}}
 										</p>
 									</td>
 									<td class="d-none d-lg-table-cell">
-										<span
-											class="badge badge-success rounded-pill d-inline"
-											>Concluída</span
-										>
+										<span class="badge badge-info rounded-pill d-inline">
+											{{consulta.status}}
+										</span>
 									</td>
 									<td>
 										<button
@@ -248,94 +237,8 @@
 										</button>
 									</td>
 								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<img
-												src="https://mdbootstrap.com/img/new/avatars/6.jpg"
-												class="rounded-circle"
-												alt=""
-												style="
-													width: 45px;
-													height: 45px;
-												"
-											/>
-											<div class="ms-3">
-												<p class="fw-bold mb-0">
-													Alex Ray
-												</p>
-												<p
-													class="text-muted mb-0 d-none d-md-table-cell"
-												>
-													04/06/2024
-												</p>
-											</div>
-										</div>
-									</td>
-									<td class="d-none d-lg-table-cell">
-										<p class="fw-normal mb-1">Endócrino</p>
-									</td>
-									<td class="d-none d-lg-table-cell">
-										<span
-											class="badge badge-primary rounded-pill d-inline"
-											>Agendada</span
-										>
-									</td>
-									<td>
-										<button
-											type="button"
-											class="btn btn-primary btn-floating btn-sm"
-											data-mdb-ripple-init
-										>
-											<i class="fas fa-align-justify"></i>
-										</button>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<img
-												src="https://mdbootstrap.com/img/new/avatars/7.jpg"
-												class="rounded-circle"
-												alt=""
-												style="
-													width: 45px;
-													height: 45px;
-												"
-											/>
-											<div class="ms-3">
-												<p class="fw-bold mb-0">
-													Kate Hunington
-												</p>
-												<p
-													class="text-muted mb-0 d-none d-md-table-cell"
-												>
-													25/03/2022
-												</p>
-											</div>
-										</div>
-									</td>
-									<td class="d-none d-lg-table-cell">
-										<p class="fw-normal mb-1">
-											Otorrinolaringologista
-										</p>
-									</td>
-									<td class="d-none d-lg-table-cell">
-										<span
-											class="badge badge-warning rounded-pill d-inline"
-											>Cancelada</span
-										>
-									</td>
-									<td>
-										<button
-											type="button"
-											class="btn btn-primary btn-floating btn-sm"
-											data-mdb-ripple-init
-										>
-											<i class="fas fa-align-justify"></i>
-										</button>
-									</td>
-								</tr>
+
+								{% endfor %}
 							</tbody>
 						</table>
 					</div>

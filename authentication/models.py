@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from .managers import CustomUserManager
+from django.utils import timezone
 from django.core.validators import MinLengthValidator, RegexValidator
 
 # Create your models here.
@@ -39,3 +40,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     
     def get_full_name(self):
         return self.first_name + " " + self.last_name
+    
+    def get_age(self):
+        today = timezone.now().date()
+        age = int(
+            today.year
+            - (self.date_of_birth.year)
+            
+        )
+        return age

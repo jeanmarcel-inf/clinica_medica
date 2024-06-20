@@ -12,3 +12,10 @@ class Especialidade(models.Model):
 class Medico(User):
     crm = models.CharField(max_length=20)
     especialidades = models.ManyToManyField(Especialidade)
+
+    def __str__(self):
+        return self.get_full_name()
+    
+    def get_especialidade(self):
+        return self.especialidades.first()
+    

@@ -10,13 +10,13 @@ class PacienteAdmin(UserAdmin):
     list_filter = [ 'is_active']
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('first_name', 'last_name', 'cpf', 'date_of_birth', 'gender')}),
+        ('Personal info', {'fields': ('first_name', 'last_name', 'cpf', 'date_of_birth', 'gender', 'cellphone_number')}),
         ('Permissions', {'fields': ('is_active',)}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('first_name', 'last_name', 'email', 'password1', 'password2', 'cpf', 'date_of_birth', 'gender'),
+            'fields': ('first_name', 'last_name', 'email', 'password1', 'password2', 'cpf', 'date_of_birth', 'gender', 'cellphone_number'),
         }),
     )
     search_fields = ('email', 'cpf')
@@ -25,11 +25,7 @@ class PacienteAdmin(UserAdmin):
 admin.site.register(Paciente, PacienteAdmin)
 
 class ConsultaAdmin(admin.ModelAdmin):
-    # Refatorar essa macacada
-    Consulta.get_patient_full_name.short_description = "Paciente"
-    Consulta.get_medic_full_name.short_description = "Medico"
-
-    list_display = ("id", "get_patient_full_name", "get_medic_full_name", "date_time", "description", "status")
+    list_display = ("id", "patient", "medico", "date_time", "description", "status")
 
 admin.site.register(Consulta, ConsultaAdmin)
 admin.site.register(StatusConsulta)
