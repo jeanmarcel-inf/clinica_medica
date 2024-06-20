@@ -3,6 +3,8 @@ from .forms import CustomAuthenticationForm
 from pacienteapp.forms import PacienteCreationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import views as auth_views
+from .forms import CustomPasswordResetForm
 
 # Create your views here.
 
@@ -35,3 +37,6 @@ def logout_view(request):
 
 def password_reset(request):
     return render(request, "authentication/pages/password-reset.html")
+
+class CustomPasswordResetView(auth_views.PasswordResetView):
+    form_class = CustomPasswordResetForm
