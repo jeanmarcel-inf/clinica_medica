@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 from authentication.models import User
 from medicoapp.models import Medico 
 
@@ -25,3 +26,8 @@ class Consulta(models.Model):
     
     def __str__(self):
         return self.medico.first_name + ' consulta: ' + self.patient.first_name
+    
+    # def clean(self):
+    #     super().clean()
+    #     if not (8 <= self.date_time.minute < 17):
+    #         raise ValidationError('A consulta deve ser agendada entre 08:00 e 17:00.')

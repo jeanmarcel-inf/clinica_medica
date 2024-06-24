@@ -12,7 +12,7 @@
 							class="rounded-circle img-fluid"
 							style="width: 150px"
 						/>
-						<h5 class="mb-2 mt-3">{{user.first_name}}</h5>
+						<h5 class="mb-2 mt-3">{{patient.first_name}}</h5>
 						<form action="/auth/logout" method="post">
 							{% csrf_token %}
 							<button class="btn btn-danger">
@@ -24,67 +24,6 @@
 						</form>
 					</div>
 				</div>
-
-				{% comment %}
-				<!-- Alergias Card -->
-				<div class="card mb-4 mb-lg-0">
-					<div class="card-body">
-						<div class="d-flex">
-							<p class="text-primary">Alergias</p>
-							<button
-								type="button"
-								class="btn btn-secondary btn-sm btn-floating ms-auto"
-								data-mdb-ripple-init
-							>
-								<i class="fa-regular fa-pen-to-square"></i>
-							</button>
-						</div>
-						<ul
-							class="list-group list-group-light list-group-small"
-						>
-							<li class="list-group-item">Item 1</li>
-							<li class="list-group-item">Item 2</li>
-							<li class="list-group-item">Item 3</li>
-							<li class="list-group-item">Item 4</li>
-							<li class="list-group-item">Item 5</li>
-						</ul>
-					</div>
-				</div>
-
-				<!-- Medicamentos Card -->
-				<div class="card my-4 mb-lg-0">
-					<div class="card-body">
-						<div class="d-flex">
-							<p class="text-primary">Medicamentos em Uso</p>
-							<button
-								type="button"
-								class="btn btn-secondary btn-sm btn-floating ms-auto"
-								data-mdb-ripple-init
-							>
-								<i class="fa-regular fa-pen-to-square"></i>
-							</button>
-						</div>
-						<table class="table">
-							<thead>
-								<tr>
-									<th scope="col">Medicamento</th>
-									<th scope="col">Dosagem</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Item 1</td>
-									<td>1g</td>
-								</tr>
-								<tr>
-									<td>Item 2</td>
-									<td>500mg</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				{% endcomment %}
 			</div>
 
 			<div class="col-lg-8">
@@ -108,7 +47,7 @@
 							</div>
 							<div class="col-sm-9">
 								<p class="text-muted mb-0">
-									{{user.get_full_name}}
+									{{patient.get_full_name}}
 								</p>
 							</div>
 						</div>
@@ -118,7 +57,7 @@
 								<p class="mb-0">Email</p>
 							</div>
 							<div class="col-sm-9">
-								<p class="text-muted mb-0">{{user.email}}</p>
+								<p class="text-muted mb-0">{{patient.email}}</p>
 							</div>
 						</div>
 						<hr />
@@ -128,7 +67,7 @@
 							</div>
 							<div class="col-sm-9">
 								<p class="text-muted mb-0">
-									{{user.cellphone_number}}
+									{{patient.cellphone_number}}
 								</p>
 							</div>
 						</div>
@@ -139,39 +78,11 @@
 							</div>
 							<div class="col-sm-9">
 								<p class="text-muted mb-0">
-									{{user.date_of_birth}}
+									{{patient.date_of_birth}}
 								</p>
 							</div>
 						</div>
 						<hr />
-						{% comment %}
-						<div class="row">
-							<div class="col-sm-3">
-								<p class="mb-0">Endereço</p>
-							</div>
-							<div class="col-sm-9">
-								<p class="text-muted mb-0">
-									Tijuca, Rio de Janeiro, RJ
-								</p>
-							</div>
-						</div>
-						{% endcomment %} {% comment %}
-						<hr class="hr hr-blurry my-5" />
-						<div class="row">
-							<div class="col col-sm-4 text-center">
-								<h2 class="text-primary">74 kg</h2>
-								<h4>Peso</h4>
-							</div>
-							<div class="col col-sm-4 text-center">
-								<h2 class="text-primary">195 cm</h2>
-								<h4>Altura</h4>
-							</div>
-							<div class="col col-sm-4 text-center">
-								<h2 class="text-primary">O+</h2>
-								<h4 class="">Tipo Sanguíneo</h4>
-							</div>
-						</div>
-						{% endcomment %}
 					</div>
 				</div>
 			</div>

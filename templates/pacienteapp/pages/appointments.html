@@ -23,8 +23,115 @@
 	<div
 		class="row row-cols-1 justify-content-evenly row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"
 	>
-		{% for consulta in consultas %}
-		<form method="post" class="col">
+		{% for medico in medicos %}
+		<div class="card">
+			<img
+				src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+				class="card-img-top"
+				alt="Hollywood Sign on The Hill"
+			/>
+			<div class="card-body">
+				<h3 class="card-title">{{ medico.get_full_name }}</h3>
+				<button class="btn btn-sm btn-outline-primary">
+					{{medico.get_especialidade}}
+				</button>
+			</div>
+			<div class="card-footer mt-3">
+				<button
+					type="button"
+					class="btn w-100 btn-primary"
+					data-bs-toggle="modal"
+					data-bs-target="#modalConsulta{{ medico.id }}"
+				>
+					Ver Horários
+				</button>
+			</div>
+		</div>
+		<!-- Modal -->
+		<div
+			class="modal modal-lg fade"
+			id="modalConsulta{{ medico.id }}"
+			tabindex="-1"
+			aria-labelledby="exampleModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div>
+							<h5 class="modal-title">Agendar Consulta</h5>
+							<small>17/06/2024</small>
+						</div>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<div class="row align-items-center">
+							<div class="col-4">
+								<img
+									src="../../../static/img/foto-medico.png"
+									class="img-thumbnail"
+									alt="foto medico"
+								/>
+							</div>
+							<div class="col-8">
+								<h6 class="text-primary mb-1">
+									CRM - {{ medico.crm }}
+								</h6>
+								<h2 class="text-break">
+									{{ medico.get_full_name }}
+								</h2>
+								<span class="badge text-bg-primary mb-3">
+									{{medico.get_especialidade}}
+								</span>
+								<h6 class="text-secondary">
+									Sexo: {{medico.gender}}
+								</h6>
+								<h6 class="text-secondary">
+									Idade: {{medico.get_age}}
+								</h6>
+							</div>
+						</div>
+						<hr class="hr hr-blurry my-4" />
+						<form
+							method="post"
+							action="{% url 'agendar_consulta' medico.id %}"
+						>
+							{% csrf_token %}
+							<div>
+								<label>Horário da Consulta: </label>
+								{{ form.data }}
+							</div>
+
+							<div class="list-inline my-4" id="id_horario">
+								{% for choice in form.hora %}
+								<label class="list-inline-item">
+									{{choice}}
+								</label>
+								{% endfor %}
+							</div>
+
+							<div data-mdb-input-init class="form-outline my-4">
+								{{form.description}}
+								<label class="form-label" for="descriptionArea"
+									>Razão da consulta</label
+								>
+							</div>
+							<button type="submit" class="btn btn-primary">
+								Agendar
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{% comment %}
+		<div class="col">
 			<div class="card">
 				<img
 					src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
@@ -32,15 +139,9 @@
 					alt="Hollywood Sign on The Hill"
 				/>
 				<div class="card-body">
-					<h3 class="card-title">
-						{{consulta.medico.get_full_name}}
-					</h3>
-					<p class="card-subtitle text-primary">
-						{{consulta.date_time.date}} -
-						{{consulta.date_time.time}}
-					</p>
-					<button class="btn btn-sm mt-2 btn-outline-primary">
-						Cardiologista
+					<h3 class="card-title">{{ medico.get_full_name }}</h3>
+					<button class="btn btn-sm btn-outline-primary">
+						{{medico.get_especialidade}}
 					</button>
 				</div>
 				<div class="card-footer mt-3">
@@ -93,53 +194,33 @@
 								</div>
 								<div class="col-8">
 									<h6 class="text-primary mb-1">
-										CRM - {{consulta.medico.crm}}
+										CRM - {{ medico.crm }}
 									</h6>
 									<h2 class="text-break">
-										{{consulta.medico.get_full_name}}
+										{{ medico.get_full_name }}
 									</h2>
 									<span class="badge text-bg-primary mb-3">
-										{{consulta.medico.get_especialidade}}
+										{{medico.get_especialidade}}
 									</span>
 									<h6 class="text-secondary">
-										Sexo: {{consulta.medico.gender}}
+										Sexo: {{medico.gender}}
 									</h6>
 									<h6 class="text-secondary">
-										Idade: {{consulta.medico.get_age}}
+										Idade: {{medico.get_age}}
+									</h6>
+									<h6 class="text-secondary">
+										Id: {{medico.id}}
 									</h6>
 								</div>
 							</div>
-							<hr class="hr hr-blurry my-3" />
+							<hr class="hr hr-blurry my-4" />
+							<form
+								action="{% url 'agendar_consulta' medico.id %}"
+								method="post"
+							>
+								{% csrf_token %} {{form.as_p}}
 
-							<form action="post">
-								<!-- Lista -->
-								<div class="btn-group">
-									{% for modal_item in modal_items %}
-									{{form.date_time}}
-									<label
-										class="btn btn-outline-secondary"
-										for="{{form.date_time.id_for_label}}"
-										checked
-										data-mdb-ripple-init
-										>{{modal_item}}</label
-									>
-									{% endfor %}
-								</div>
-								<div
-									data-mdb-input-init
-									class="form-outline mt-4 mb-2"
-								>
-									<textarea
-										class="form-control"
-										id="textAreaExample1"
-										rows="3"
-									></textarea>
-									<label
-										class="form-label"
-										for="textAreaExample"
-										>Razão da Consulta</label
-									>
-								</div>
+								<button class="btn btn-primary">Submit</button>
 							</form>
 						</div>
 						<div class="modal-footer">
@@ -150,8 +231,8 @@
 					</div>
 				</div>
 			</div>
-		</form>
-		{% endfor %}
+		</div>
+		{% endcomment %} {% endfor %}
 	</div>
 </div>
 
