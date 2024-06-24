@@ -22,6 +22,7 @@ def register_view(request):
     return render(request, "authentication/pages/register.html", {"form": form})
 
 
+
 def login_view(request):
     if request.method == "POST":
         form = CustomAuthenticationForm(data=request.POST)
@@ -29,7 +30,9 @@ def login_view(request):
             user = form.get_user()
             login(request, user)
             
-            if Group.objects.filter(name='Médicos', user=user).exists():
+            if user.is_superuser:
+                return redirect('/admin/')
+            elif Group.objects.filter(name='Médicos', user=user).exists():
                 return redirect(reverse('medico:home'))
             elif Group.objects.filter(name='Pacientes', user=user).exists():
                 return redirect(reverse('paciente:home'))
