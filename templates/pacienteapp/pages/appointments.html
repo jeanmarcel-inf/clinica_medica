@@ -3,12 +3,11 @@
 
 <div class="container">
 	<div class="row gap-4 justify-content-between my-4 mt-5">
-		<select class="form-select w-25" aria-label="Default select example">
-			<option selected>Especialidade</option>
-			<option value="1">One</option>
-			<option value="2">Two</option>
-			<option value="3">Three</option>
-		</select>
+		<!-- Formulário de Filtro -->
+        <form method="get" action="{% url 'paciente:appointments' %}" class="form-inline mb-3 w-25">
+            {{ filtro_form.especialidade }}
+            <button type="submit" class="btn btn-primary ml-2">Filtrar</button>
+        </form>
 		<div data-mdb-input-init class="form-outline w-25 mb-3">
 			<input
 				type="date"
@@ -99,18 +98,20 @@
 						<hr class="hr hr-blurry my-4" />
 						<form
 							method="post"
-							action="{% url 'agendar_consulta' medico.id %}"
+							action="{% url 'paciente:agendar_consulta' medico.id %}"
 						>
 							{% csrf_token %}
 							<div>
-								<label>Horário da Consulta: </label>
+								<label>Data da Consulta: </label>
 								{{ form.data }}
 							</div>
 
 							<div class="list-inline my-4" id="id_horario">
+								<p class="mb-2">Horário da Consulta: </p>
 								{% for choice in form.hora %}
 								<label class="list-inline-item">
 									{{choice}}
+									
 								</label>
 								{% endfor %}
 							</div>
@@ -130,109 +131,7 @@
 			</div>
 		</div>
 
-		{% comment %}
-		<div class="col">
-			<div class="card">
-				<img
-					src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
-					class="card-img-top"
-					alt="Hollywood Sign on The Hill"
-				/>
-				<div class="card-body">
-					<h3 class="card-title">{{ medico.get_full_name }}</h3>
-					<button class="btn btn-sm btn-outline-primary">
-						{{medico.get_especialidade}}
-					</button>
-				</div>
-				<div class="card-footer mt-3">
-					<button
-						type="button"
-						class="btn w-100 btn-primary"
-						data-bs-toggle="modal"
-						data-bs-target="#exampleModal"
-					>
-						Ver Horários
-					</button>
-				</div>
-			</div>
-			<!-- Modal -->
-			<div
-				class="modal fade"
-				id="exampleModal"
-				tabindex="-1"
-				aria-labelledby="exampleModalLabel"
-				aria-hidden="true"
-			>
-				<div class="modal-dialog modal-lg">
-					<div class="modal-content">
-						<div class="modal-header">
-							<div>
-								<h1
-									class="modal-title fs-5"
-									id="exampleModalLabel"
-								>
-									Agendar Horário de Consulta
-								</h1>
-								<small>17/06/2024</small>
-							</div>
-							<button
-								type="button"
-								class="btn-close"
-								data-bs-dismiss="modal"
-								aria-label="Close"
-							></button>
-						</div>
-
-						<div class="modal-body">
-							<div class="row align-items-center">
-								<div class="col-4">
-									<img
-										src="../../../static/img/foto-medico.png"
-										class="img-thumbnail"
-										alt="foto medico"
-									/>
-								</div>
-								<div class="col-8">
-									<h6 class="text-primary mb-1">
-										CRM - {{ medico.crm }}
-									</h6>
-									<h2 class="text-break">
-										{{ medico.get_full_name }}
-									</h2>
-									<span class="badge text-bg-primary mb-3">
-										{{medico.get_especialidade}}
-									</span>
-									<h6 class="text-secondary">
-										Sexo: {{medico.gender}}
-									</h6>
-									<h6 class="text-secondary">
-										Idade: {{medico.get_age}}
-									</h6>
-									<h6 class="text-secondary">
-										Id: {{medico.id}}
-									</h6>
-								</div>
-							</div>
-							<hr class="hr hr-blurry my-4" />
-							<form
-								action="{% url 'agendar_consulta' medico.id %}"
-								method="post"
-							>
-								{% csrf_token %} {{form.as_p}}
-
-								<button class="btn btn-primary">Submit</button>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-primary">
-								Agendar
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		{% endcomment %} {% endfor %}
+		 {% endfor %}
 	</div>
 </div>
 

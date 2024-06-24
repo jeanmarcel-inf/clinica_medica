@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.exceptions import ValidationError
 from .models import Paciente, Consulta
 from medicoapp.models import Medico
-from .forms import ConsultaCreateForm 
+from .forms import ConsultaCreateForm, EspecialidadeFilterForm
 
 # Create your views here.
 
@@ -16,11 +16,14 @@ def home(request):
 
 
 def appointments_list(request):
-    medicos = Medico.objects.all()
+    especialidade_id = request.GET.get('especialidade')
+    if especialidade_id:
+        medicos = Medico.objects.filter(especialidades=especialidade_id)
+    else:
+        medicos = Medico.objects.all()
     form = ConsultaCreateForm()
-    return render(request, "pacienteapp/pages/appointments.html", {"medicos": medicos, "form": form })
-    # modal_items = ['8:00', '8:30', '9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '12:00', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00' ]
-    # form = ConsultaCreateForm()
+    filtro_form = EspecialidadeFilterForm()
+    return render(request, "pacienteapp/pages/appointments.html", {"medicos": medicos, "form": form, "filtro_form": filtro_form })
 
 def make_appointment(request, medico_id):
     medico = Medico.objects.get(pk=medico_id)

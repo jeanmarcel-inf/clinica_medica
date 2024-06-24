@@ -7,7 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views as auth_views
 from .forms import CustomPasswordResetForm
 from django.contrib.auth.models import Group
-
+from medicoapp.models import Medico
+from pacienteapp.models import Paciente
 
 # Create your views here.
 
@@ -32,13 +33,10 @@ def login_view(request):
             
             if user.is_superuser:
                 return redirect('/admin/')
-            elif Group.objects.filter(name='Médicos', user=user).exists():
+            elif Medico.objects.filter(pk=user.id).exists():
                 return redirect(reverse('medico:home'))
-            elif Group.objects.filter(name='Pacientes', user=user).exists():
+            elif Paciente.objects.filter(pk=user.id).exists():
                 return redirect(reverse('paciente:home'))
-            else:
-                # Handle users not in any specific group
-                return redirect(reverse('authentication:login'))
     else:
         form = CustomAuthenticationForm()
     return render(request, "authentication/pages/login.html", {"form": form})

@@ -15,7 +15,7 @@ class MedicoAdmin(UserAdmin):
     list_filter = [ 'is_active']
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('first_name', 'last_name', 'cpf', 'crm', 'date_of_birth', 'gender', 'especialidades')}),
+        ('Personal info', {'fields': ('first_name', 'last_name', 'cpf', 'crm', 'date_of_birth', 'gender', 'especialidades', 'groups')}),
         ('Permissions', {'fields': ('is_active',)}),
     )
     add_fieldsets = (

@@ -1,5 +1,6 @@
 from django import forms
 from .models import Paciente, Consulta
+from medicoapp.models import Especialidade
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.forms.widgets import DateInput, RadioSelect
 from datetime import datetime
@@ -69,7 +70,7 @@ class PacienteChangeForm(UserChangeForm):
 
 class ConsultaCreateForm(forms.ModelForm):
     data = forms.DateField(widget=DateInput(attrs={'type': 'date'}))
-    hora = forms.ChoiceField(widget=RadioSelect)
+    hora = forms.ChoiceField(widget=RadioSelect())
 
     class Meta:
         model = Consulta
@@ -98,3 +99,7 @@ class ConsultaCreateForm(forms.ModelForm):
             date_time = datetime.combine(data, datetime.strptime(hora, "%H:%M").time())
             cleaned_data['date_time'] = date_time
         return cleaned_data
+
+
+class EspecialidadeFilterForm(forms.Form):
+    especialidade = forms.ModelChoiceField(queryset=Especialidade.objects.all(), required=False, label='Filtrar por Especialidade')
