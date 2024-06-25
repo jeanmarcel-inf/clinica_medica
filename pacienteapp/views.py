@@ -6,7 +6,6 @@ from .forms import ConsultaCreateForm, EspecialidadeFilterForm
 
 # Create your views here.
 
-
 def index(request):
     return render(request, "pacienteapp/pages/index.html")
 
