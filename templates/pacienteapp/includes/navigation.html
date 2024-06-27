@@ -17,7 +17,7 @@
 			<i class="fas fa-bars"></i>
 		</button>
 		<!-- Navbar brand -->
-		<a class="navbar-brand text-success fw-bold gap-1 mt-2 mt-lg-0" href="home">
+		<a class="navbar-brand text-success fw-bold gap-1 mt-2 mt-lg-0" href={% url 'paciente:home'%}>
 			Clínica <span class="text-primary"> Médica</span>
 			<img
 				class="ms-2"
@@ -32,15 +32,15 @@
 			<!-- Left links -->
 			<ul class="navbar-nav ms-auto mb-2 gap-3 mb-lg-0">
 				<li class="nav-item hover-primary">
-					<a class="btn btn-link" href="home">Home</a>
+					<a class="btn btn-link" href="{% url 'paciente:home'%}">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="btn btn-link" href="agendamentos"
+					<a class="btn btn-link" href="{% url 'paciente:appointments'%}"
 						>Agendamento de Consultas</a
 					>
 				</li>
 				<li class="nav-item">
-					<a class="btn btn-link" href="perfil">
+					<a class="btn btn-link" href="{% url 'paciente:profile'%}">
 						Perfil
 						<i class="fas fa-circle-user ms-2"></i>
 					</a>

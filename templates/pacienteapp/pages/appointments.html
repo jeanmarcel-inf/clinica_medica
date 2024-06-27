@@ -1,27 +1,18 @@
 {% extends "../layouts/base.html" %} {% block title %}Agendamentos{% endblock %}
 {% block content %} {% include "../includes/navigation.html" %}
 
-<div class="container">
-	<div class="row gap-4 justify-content-between my-4 mt-5">
-		<!-- Formulário de Filtro -->
-        <form method="get" action="{% url 'paciente:appointments' %}" class="form-inline mb-3 w-25">
-            {{ filtro_form.especialidade }}
-            <button type="submit" class="btn btn-primary ml-2">Filtrar</button>
-        </form>
-		<div data-mdb-input-init class="form-outline w-25 mb-3">
-			<input
-				type="date"
-				id="form3Example4"
-				class="form-control form-control-lg"
-			/>
-			<label class="form-label" for="form3Example4">Data</label>
-		</div>
+<div class="container my-5">
+	<div class="row">
+		<form method="get" action="{% url 'paciente:appointments' %}" class="form-inline mb-3 w-25">
+			{{filtro_form.as_p}}
+			<button type="submit" class="btn btn-primary ml-2">Filtrar</button>
+    	</form>
 	</div>
-</div>
-<div class="container-fluid mb-5">
 	<div
-		class="row row-cols-1 justify-content-evenly row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"
+		class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4"
 	>
+		{% if medicos %}
+
 		{% for medico in medicos %}
 		<div class="card">
 			<img
@@ -131,7 +122,13 @@
 			</div>
 		</div>
 
-		 {% endfor %}
+		{% endfor %}
+
+		{% else %}
+
+		<h1 class="w-100 my-5">Não existem médicos disponíveis</h1>
+
+		{% endif %}
 	</div>
 </div>
 

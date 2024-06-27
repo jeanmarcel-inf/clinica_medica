@@ -17,7 +17,7 @@ def register_view(request):
         form = PacienteCreationForm(request.POST)
         if form.is_valid():
             login(request, form.save())
-            return redirect("/paciente/home")
+            return redirect("paciente:home")
     else:
         form = PacienteCreationForm()
     return render(request, "authentication/pages/register.html", {"form": form})
@@ -44,7 +44,7 @@ def login_view(request):
 def logout_view(request):
     if request.method == "POST":
         logout(request)
-        return redirect("/paciente/")
+        return redirect("paciente:index")
 
 def password_reset(request):
     return render(request, "authentication/pages/password-reset.html")

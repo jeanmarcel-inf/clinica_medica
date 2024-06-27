@@ -38,9 +38,16 @@ def make_appointment(request, medico_id):
             consulta.save()
     else:
         form = ConsultaCreateForm(initial={'medico': medico_id})
-    return redirect('/paciente/agendamentos')
+    return redirect('paciente:appointments')
 
 def profile(request):
     patient = Paciente.objects.get(pk=request.user.id)
     consultas = Consulta.objects.filter(patient = patient)
+
     return render(request, "pacienteapp/pages/profile.html", {'consultas': consultas, 'patient': patient})
+
+def delete_consulta(request, consulta_id):
+    if request.method == "GET":
+        Consulta.objects.filter(pk = consulta_id).update(status = 2)
+
+    return redirect("paciente:profile")
