@@ -1,137 +1,158 @@
-{% extends "../layouts/base.html" %} {% block title %}Consultas{% endblock %}
-{%block header_title %}Consultas{% endblock %} {% block content%}
+{% extends "../layouts/base.html" %}
+{% block title %}Consultas{% endblock %}
+{% block header_title %}Consultas{% endblock %}
+{% block content %}
 <div class="row">
-	<div class="col-4">
-		<div class="small-box bg-teal">
-			<div class="inner">
-				<h3>150</h3>
-				<p>Total de Consultas</p>
-			</div>
-			<div class="icon">
-				<i class="fa-regular fa-rectangle-list"></i>
-			</div>
-		</div>
-	</div>
-	<div class="col-4">
-		<div class="small-box bg-info">
-			<div class="inner">
-				<h3>150</h3>
-				<p>Total de Pacientes</p>
-			</div>
-			<div class="icon">
-				<i class="fa-solid fa-user"></i>
-			</div>
-		</div>
-	</div>
-	<div class="col-4">
-		<div class="small-box bg-purple">
-			<div class="inner">
-				<h3>150</h3>
-				<p>Consultas Finalizadas</p>
-			</div>
-			<div class="icon">
-				<i class="fa-solid fa-check-double"></i>
-			</div>
-		</div>
-	</div>
+    <div class="col-4">
+        <div class="small-box bg-teal">
+            <div class="inner">
+                <h3>{{ total_consultas }}</h3>
+                <p>Total de Consultas</p>
+            </div>
+            <div class="icon">
+                <i class="fa-regular fa-rectangle-list"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3>{{ total_pacientes }}</h3>
+                <p>Total de Pacientes</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="small-box bg-purple">
+            <div class="inner">
+                <h3>150</h3>
+                <p>Consultas Finalizadas</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-check-double"></i>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="col">
-	<div class="card card-outline card-success">
-		<div class="card-header">
-			<!-- Barra de Pesquisa Form -->
-			<form action="#">
-				<div class="row">
-					<div class="col">
-						<div class="form-group">
-							<div class="input-group input-group w-50">
-								<input
-									type="search"
-									class="form-control form-control"
-									placeholder="Barra de Pesquisa"
-								/>
-								<div class="input-group-append">
-									<button
-										type="submit"
-										class="btn btn btn-default"
-									>
-										<i class="fa fa-search"></i>
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
-                    <div>
-                        <button class="btn btn-primary">
-					        <i class="fa-solid fa-filter"></i>
-				        </button>
+    <div class="card card-outline card-success">
+        <div class="card-header">
+            <!-- Barra de Pesquisa Form -->
+            <form action="/medico/consultas" method="GET" id="searchForm">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <div class="input-group input-group w-50">
+                                <input type="search" name="q" id="searchInput" class="form-control" placeholder="Barra de Pesquisa" value="{{ query }}" />
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-default" id="clearSearch">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-				</div>
-			</form>
-		</div>
-		<!-- /.card-header -->
+                    <div>
+                        <button type="button" class="btn btn-primary">
+                            <i class="fa-solid fa-filter"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- /.card-header -->
 
-		<div class="card-body p-0">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">Paciente</th>
-						<th scope="col">Data da Consulta</th>
-						<th scope="col">Status</th>
-						<th scope="col"></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>Jean Marcel Maia</td>
-						<td>09/06/2024</td>
-						<td>
-                            <span class="badge rounded-pill p-1 px-2 bg-primary">Agendada</span>
+        <div class="card-body p-0">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Paciente</th>
+                        <th scope="col">Data da Consulta</th>
+                        <th scope="col">Status</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for consulta in consultas %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ consulta.patient.get_full_name }}</td>
+                        <td>{{ consulta.date_time|date:"d/m/Y H:i" }}</td>
+                        <td>
+                            <span class="badge rounded-pill p-1 px-2 bg-{{ consulta.status_color }}">{{ consulta.status }}</span>
                         </td>
                         <td>
-                            <button class="btn btn-sm btn-primary">
+                            <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#consultaModal" data-consulta-id="{{ consulta.id }}" data-paciente="{{ consulta.patient.get_full_name }}" data-datahora="{{ consulta.date_time|date:"d/m/Y H:i" }}" data-razao="{{ consulta.description }}">
                                 <i class="fa-solid fa-file-invoice"></i>
                             </button>
                         </td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Fulano Maia</td>
-						<td>28/02/2024</td>
-						<td>
-                            <span class="badge rounded-pill p-1 px-2 bg-success">Concluída</span>
-                        </td>
-                        <td>
-                            <button class="btn btn-sm btn-primary">
-                                <i class="fa-solid fa-file-invoice"></i>
-                            </button>
-                        </td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td>Ciclano da Silva</td>
-						<td>12/05/2022</td>
-						<td>
-                            <span class="badge rounded-pill p-1 px-2 bg-warning">Cancelada</span>
-                        </td>
-                        <td>
-                            <button class="btn btn-sm btn-primary">
-                                <i class="fa-solid fa-file-invoice"></i>
-                            </button>
-                        </td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<!-- /.card-body -->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
 
-		<div class="card-footer">
+        <div class="card-footer">
             {% include "../includes/pagination.html" %}
         </div>
-		<!-- /.card-footer -->
-	</div>
-	<!-- /.card -->
+        <!-- /.card-footer -->
+    </div>
+    <!-- /.card -->
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="consultaModal" tabindex="-1" role="dialog" aria-labelledby="consultaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="consultaModalLabel">Detalhes da Consulta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Paciente:</strong> <span id="modalPaciente"></span></p>
+                <p><strong>Data e Hora:</strong> <span id="modalDataHora"></span></p>
+                <p><strong>Razão da Consulta:</strong> <span id="modalRazao"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    $('#consultaModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var paciente = button.data('paciente'); // Extract info from data-* attributes
+        var dataHora = button.data('datahora');
+        var razao = button.data('razao');
+
+        // Update the modal's content.
+        var modal = $(this);
+        modal.find('#modalPaciente').text(paciente);
+        modal.find('#modalDataHora').text(dataHora);
+        modal.find('#modalRazao').text(razao);
+    });
+
+    document.getElementById('clearSearch').addEventListener('click', function() {
+        var searchInput = document.getElementById('searchInput');
+        searchInput.value = '';
+        document.getElementById('searchForm').submit();
+    });
+});
+</script>
 {% endblock %}

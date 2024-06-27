@@ -1,7 +1,7 @@
 {% extends "../layouts/base.html" %}
 {% block title %}Dashboard{% endblock %}
 {% block header_title %}Dashboard{% endblock %}
-{% block subtitle %}09/06/2024{% endblock %}
+{% block subtitle %}{{ today }}{% endblock %}
 {% block content %}
 
 <div class="row mb-4">
@@ -15,13 +15,13 @@
     <div class="col-4">
         <div class="small-box bg-teal">
             <div class="inner">
-                <h3>150</h3>
-                <p>Total de Consultas</p>
+                <h3>{{ total_consultas }}</h3>
+                <p>Total de Consultas Hoje</p>
             </div>
             <div class="icon">
                 <i class="fa-regular fa-rectangle-list"></i>
             </div>
-            <a href="#" class="small-box-footer">
+            <a href="/medico/consultas" class="small-box-footer">
                 Mais Informações <i class="ml-2 fas fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -29,13 +29,13 @@
     <div class="col-4">
         <div class="small-box bg-info">
             <div class="inner">
-                <h3>150</h3>
+                <h3>{{ total_pacientes }}</h3>
                 <p>Total de Pacientes</p>
             </div>
             <div class="icon">
                 <i class="fa-solid fa-user"></i>
             </div>
-            <a href="#" class="small-box-footer">
+            <a href="/medico/pacientes" class="small-box-footer">
                 Mais Informações <i class="ml-2 fas fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -72,32 +72,19 @@
             <!-- /.card-header -->
             <div class="card-body p-0">
                 <ul class="list-group-flush p-0">
+                    {% for consulta in consultas_hoje %}
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <div class="ms-2 me-auto">
-                            <div class="fw-bold">Fulano da Silva</div>
-                            <span class="badge bg-primary">07:30</span>
+                            <div class="fw-bold">{{ consulta.patient.get_full_name }}</div>
+                            <span class="badge bg-primary">{{ consulta.date_time|date:"H:i" }}</span>
                         </div>
-                        
                     </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div class="ms-2 me-auto">
-                            <div class="fw-bold">Fulano da Silva</div>
-                            <span class="badge bg-primary">07:30</span>
-                        </div>
-                        
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div class="ms-2 me-auto">
-                            <div class="fw-bold">Fulano da Silva</div>
-                            <span class="badge bg-primary">07:30</span>
-                        </div>
-                        
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
 
             <div class="card-footer text-center">
-                <a href="#" class="link">Ver Todos</a>
+                <a href="/medico/consultas" class="link">Ver Todos</a>
             </div>
         </div>
     </div>
@@ -110,20 +97,26 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+                {% if consultas_hoje %}
                 <div class="row">
                     <div class="col">
-                        <h4 class="fw-bold mb-0">Fulano da Silva</h4>
+                        <h4 class="fw-bold mb-0">{{ consultas_hoje.0.patient.get_full_name }}</h4>
                         <div>
-                            <small class="mr-3">Sexo: Masculino</small>
-                            <small>Idade: 56</small>
+                            <small class="mr-3">Hora: {{ consultas_hoje.0.date_time|date:"H:i" }}</small>
                         </div>
-                        <span class="badge bg-primary">07:30</span>
                     </div>
                 </div>
+                {% else %}
+                <div class="row">
+                    <div class="col">
+                        <h4 class="fw-bold mb-0">Nenhum paciente agendado</h4>
+                    </div>
+                </div>
+                {% endif %}
             </div>
 
             <div class="card-footer text-center">
-                <a href="#" class="link">Ver Todos</a>
+                <a href="/medico/pacientes" class="link">Ver Todos</a>
             </div>
         </div>
     </div>
