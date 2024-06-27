@@ -1,3 +1,4 @@
+<!-- medicoapp/pages/appointments.html -->
 {% extends "../layouts/base.html" %}
 {% block title %}Consultas{% endblock %}
 {% block header_title %}Consultas{% endblock %}
@@ -28,7 +29,7 @@
     <div class="col-4">
         <div class="small-box bg-purple">
             <div class="inner">
-                <h3>150</h3>
+                <h3>{{ total_consultas_finalizadas }}</h3>
                 <p>Consultas Finalizadas</p>
             </div>
             <div class="icon">
@@ -62,7 +63,7 @@
                         </div>
                     </div>
                     <div>
-                        <button type="button" class="btn btn-primary">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#filterModal">
                             <i class="fa-solid fa-filter"></i>
                         </button>
                     </div>
@@ -89,7 +90,7 @@
                         <td>{{ consulta.patient.get_full_name }}</td>
                         <td>{{ consulta.date_time|date:"d/m/Y H:i" }}</td>
                         <td>
-                            <span class="badge rounded-pill p-1 px-2 bg-{{ consulta.status_color }}">{{ consulta.status }}</span>
+                            <span class="badge rounded-pill p-1 px-2 bg-{{ consulta.status_color }}">{{ consulta.status.title }}</span>
                         </td>
                         <td>
                             <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#consultaModal" data-consulta-id="{{ consulta.id }}" data-paciente="{{ consulta.patient.get_full_name }}" data-datahora="{{ consulta.date_time|date:"d/m/Y H:i" }}" data-razao="{{ consulta.description }}">
@@ -111,7 +112,7 @@
     <!-- /.card -->
 </div>
 
-<!-- Modal -->
+<!-- Modal de Detalhes da Consulta -->
 <div class="modal fade" id="consultaModal" tabindex="-1" role="dialog" aria-labelledby="consultaModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -122,7 +123,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p><strong>Paciente:</strong> <span id="modalPaciente"></span></p>
+                <p><strong>Paciente:</strong> <span id="modalPacienteNome"></span></p>
                 <p><strong>Data e Hora:</strong> <span id="modalDataHora"></span></p>
                 <p><strong>Razão da Consulta:</strong> <span id="modalRazao"></span></p>
             </div>
@@ -133,26 +134,62 @@
     </div>
 </div>
 
+<!-- Modal de Filtros -->
+<div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="/medico/consultas" method="GET">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="filterModalLabel">Filtros</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="start_date">Data de Início</label>
+                        <input type="date" name="start_date" id="start_date" class="form-control" value="{{ start_date }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="end_date">Data de Fim</label>
+                        <input type="date" name="end_date" id="end_date" class="form-control" value="{{ end_date }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select name="status" id="status" class="form-control">
+                            <option value="">Todos</option>
+                            {% for status in status_list %}
+                            <option value="{{ status.title }}" {% if status.title == status_name %}selected{% endif %}>{{ status.title }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    $('#consultaModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget); // Button that triggered the modal
-        var paciente = button.data('paciente'); // Extract info from data-* attributes
+    document.getElementById('clearSearch').addEventListener('click', function() {
+        document.getElementById('searchInput').value = '';
+        document.getElementById('searchForm').submit();
+    });
+
+    $('#consultaModal').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget);
+        var consultaId = button.data('consulta-id');
+        var paciente = button.data('paciente');
         var dataHora = button.data('datahora');
         var razao = button.data('razao');
 
-        // Update the modal's content.
         var modal = $(this);
-        modal.find('#modalPaciente').text(paciente);
+        modal.find('#modalPacienteNome').text(paciente);
         modal.find('#modalDataHora').text(dataHora);
         modal.find('#modalRazao').text(razao);
     });
-
-    document.getElementById('clearSearch').addEventListener('click', function() {
-        var searchInput = document.getElementById('searchInput');
-        searchInput.value = '';
-        document.getElementById('searchForm').submit();
-    });
-});
 </script>
 {% endblock %}

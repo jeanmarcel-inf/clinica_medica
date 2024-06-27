@@ -53,6 +53,19 @@
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
+
+    <!-- Logout Button -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="position: absolute; bottom: 20px; width: 100%;">
+      <div class="info">
+        <form action="/auth/logout" method="post" style="margin: 0;">
+          {% csrf_token %}
+          <button class="btn btn-secondary btn-block">
+            Sair da Conta
+            <i class="fa-solid ms-2 fa-right-from-bracket"></i>
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
   <!-- /.sidebar -->
 </aside>
