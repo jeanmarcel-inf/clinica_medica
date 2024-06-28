@@ -213,7 +213,7 @@
 															<span>{{consulta.medico.get_especialidade}}</span>
 														</p>
 													</div>
-													{% if consulta.status.title != "Cancelado" and consulta.status.title != "Concluido" %}
+													{% if consulta.status.title != "Cancelado" and consulta.status.title != "Concluído" %}
 													<div class="modal-footer">
 														<form action="{% url 'paciente:delete_consulta' consulta.id %}" method="get">
 															<button

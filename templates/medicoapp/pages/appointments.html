@@ -90,7 +90,7 @@
                         <td>{{ consulta.patient.get_full_name }}</td>
                         <td>{{ consulta.date_time|date:"d/m/Y H:i" }}</td>
                         <td>
-                            <span class="badge rounded-pill p-1 px-2 bg-{{ consulta.status_color }}">{{ consulta.status.title }}</span>
+                            <span class="badge rounded-pill d-inline {% if consulta.status.title == 'Agendado' %} text-info {% elif consulta.status.title == 'Cancelado' %} text-danger {% elif consulta.status.title == 'Concluído' %} text-success {% endif %}">{{ consulta.status.title }}</span>
                         </td>
                         <td>
                             <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#consultaModal" data-consulta-id="{{ consulta.id }}" data-paciente="{{ consulta.patient.get_full_name }}" data-datahora="{{ consulta.date_time|date:"d/m/Y H:i" }}" data-razao="{{ consulta.description }}">
@@ -103,11 +103,6 @@
             </table>
         </div>
         <!-- /.card-body -->
-
-        <div class="card-footer">
-            {% include "../includes/pagination.html" %}
-        </div>
-        <!-- /.card-footer -->
     </div>
     <!-- /.card -->
 </div>
