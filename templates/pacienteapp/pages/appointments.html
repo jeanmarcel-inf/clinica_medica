@@ -1,9 +1,12 @@
-{% extends "../layouts/base.html" %} {% block title %}Agendamentos{% endblock %}
+{% extends "../layouts/base.html" %} 
+{% load static %}
+{% block title %}Agendamentos{% endblock %}
 {% block content %} {% include "../includes/navigation.html" %}
 
-<div class="container my-5">
+<div class="container my-3">
 	<div class="row">
 		<form method="get" action="{% url 'paciente:appointments' %}" class="form-inline mb-3 w-25">
+			{{filtro_form.especialidade.label}}
 			<select name="especialidade" id="filter_especialidade" class="form-control">
 				{% for option in filtro_form.especialidade %}
 					{{option}}
@@ -13,14 +16,14 @@
     	</form>
 	</div>
 	<div
-		class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4"
+		class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mt-1"
 	>
 		{% if medicos %}
 
 		{% for medico in medicos %}
-		<div class="card">
+		<div class="card w-25">
 			<img
-				src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+				src="{% if medico.gender == "M"%} {% static 'img/male-user-img.jpg'%} {% elif medico.gender == "F" %} {% static 'img/female-user-img.jpg'%} {% endif %}"
 				class="card-img-top"
 				alt="Hollywood Sign on The Hill"
 			/>
@@ -67,7 +70,7 @@
 						<div class="row align-items-center">
 							<div class="col-4">
 								<img
-									src="../../../static/img/foto-medico.png"
+									src="{% if medico.gender == "M"%} {% static 'img/male-user-img.jpg'%} {% elif medico.gender == "F" %} {% static 'img/female-user-img.jpg'%} {% endif %}"
 									class="img-thumbnail"
 									alt="foto medico"
 								/>
@@ -102,11 +105,10 @@
 							</div>
 
 							<div class="list-inline my-4" id="id_horario">
-								<p class="mb-2">Horário da Consulta: </p>
+								<p>Horário da Consulta: </p>
 								{% for choice in form.hora %}
-								<label class="list-inline-item">
+								<label class="list-inline-item my-2">
 									{{choice}}
-									
 								</label>
 								{% endfor %}
 							</div>

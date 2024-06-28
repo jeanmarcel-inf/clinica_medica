@@ -1,4 +1,7 @@
-{% extends "../layouts/base.html" %} {% block title %}Perfil{% endblock %} {% block content %} {% include "../includes/navigation.html" %}
+{% extends "../layouts/base.html" %}{% load static%} 
+{% block title %}Perfil{% endblock %} 
+{% block content %} 
+{% include "../includes/navigation.html" %}
 <section style="background-color: #eee">
 	<div class="container py-5">
 		<div class="row">
@@ -7,7 +10,7 @@
 				<div class="card mb-4">
 					<div class="card-body text-center">
 						<img
-							src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+							src="{% if patient.gender == "M"%} {% static 'img/male-user-img.jpg'%} {% elif patient.gender == "F" %} {% static 'img/female-user-img.jpg'%} {% endif %}"
 							alt="avatar"
 							class="rounded-circle img-fluid"
 							style="width: 150px"

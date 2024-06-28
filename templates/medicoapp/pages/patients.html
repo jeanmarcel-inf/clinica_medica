@@ -14,8 +14,11 @@
                         <div class="row">
                             <div class="col-7">
                                 <h2 class="lead"><b>{{ paciente.get_full_name }}</b></h2>
+                                <p class="text-muted text-sm mb-1 mt-3">
+                                    <b>Sexo: </b> {{ paciente.gender }}
+                                </p>
                                 <p class="text-muted text-sm">
-                                    <b>Sobre: </b> {{ paciente.gender }}, {{ paciente.age }} anos.
+                                    <b>Idade: </b> {{ paciente.get_age }} anos.
                                 </p>
                                 <ul class="ml-4 mb-0 fa-ul text-muted">
                                     <li class="small">
@@ -27,7 +30,7 @@
                                 </ul>
                             </div>
                             <div class="col-5 text-center">
-                                <img src="{% static 'img/user1.jpg' %}" alt="user-avatar" class="img-circle img-fluid" />
+                                <img src="{% if paciente.gender == "M"%} {% static 'img/male-user-img.jpg'%} {% elif paciente.gender == "F" %} {% static 'img/female-user-img.jpg'%} {% endif %}" alt="user-avatar" class="img-circle img-fluid" />
                             </div>
                         </div>
                     </div>
